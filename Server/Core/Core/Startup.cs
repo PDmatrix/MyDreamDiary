@@ -15,6 +15,9 @@ namespace Core
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Environment.GetEnvironmentVariable("ASPNETCORE_CONNECTION_STRING") ??
+                                   throw new ArgumentException("There is no ASPNETCORE_CONNECTION_STRING provided");
+            
             services.AddCors();
             
             services.AddMvc()
@@ -23,17 +26,15 @@ namespace Core
             services.AddScoped<ICoreContextFactory, CoreContextFactory>();
 
             services.AddScoped<IPageRepository>(
-                provider => new PageRepository(
-                    Environment.GetEnvironmentVariable("ASPNETCORE_CONNECTION_STRING") ??
-                    throw new ArgumentException(
-                        "There is no ASPNETCORE_CONNECTION_STRING provided"),
+                provider => new PageRepository(connectionString,
                     provider.GetService<ICoreContextFactory>()));
             
             services.AddScoped<IUserRepository>(
-                provider => new UserRepository(
-                    Environment.GetEnvironmentVariable("ASPNETCORE_CONNECTION_STRING") ??
-                    throw new ArgumentException(
-                        "There is no ASPNETCORE_CONNECTION_STRING provided"),
+                provider => new UserRepository(connectionString,
+                    provider.GetService<ICoreContextFactory>()));
+            
+            services.AddScoped<IPostRepository>(
+                provider => new PostRepository(connectionString,
                     provider.GetService<ICoreContextFactory>()));
         }
 

@@ -1,0 +1,22 @@
+{
+  "name": "graphqlerver",
+  "version": "1.0.0",
+  "description": "GraphQL server for fetching data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dmatrix",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.1.0",
+    "dotenv": "^6.1.0",
+    "es6-promise": "^4.2.5",
+    "graphql": "^14.0.2",
+    "isomorphic-unfetch": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/PDmatrix/MyDreamDiary.git"
+  }
+}

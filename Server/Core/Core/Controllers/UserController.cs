@@ -14,7 +14,7 @@ namespace Core.Controllers
             _userRepository = userRepository;
         }
         
-        [Route("user")]
+        [Route("getuser")]
         [HttpGet]
         public async Task<IActionResult> GetUser(int id)
         {

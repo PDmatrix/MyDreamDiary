@@ -14,7 +14,7 @@ namespace Core.Controllers
             _pageRepository = pageRepository;
         }
         
-        [Route("page")]
+        [Route("getpage")]
         [HttpGet]
         public async Task<IActionResult> GetPage(int index)
         {
