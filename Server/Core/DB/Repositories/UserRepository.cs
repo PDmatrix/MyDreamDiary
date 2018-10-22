@@ -20,8 +20,8 @@ namespace DB.Repositories
             {
                 var query = context.IdentityUser
                     .AsQueryable()
-                    .Include(r => r.Comments)
-                    .Include(r => r.Posts);
+                    .Include(r => r.Comment)
+                    .Include(r => r.Post);
                 
                 return await query.FirstAsync(r => r.Id == id);
             }

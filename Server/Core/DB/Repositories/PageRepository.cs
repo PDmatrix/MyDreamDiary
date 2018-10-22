@@ -35,15 +35,16 @@ namespace DB.Repositories
                 if (tags != null)
                 {
                     var tagsEnumerable = tags as string[] ?? tags.ToArray();
-                    query = query.Where(r => r.Tags.Any(z => tagsEnumerable.Contains(z.Name)));
+                    query = query.Where(r => r.PostTag.Any(z => tagsEnumerable.Contains(z.Tag.Name)));
                 }
 
                 result.TotalPages = (int)Math.Ceiling((double) await query.CountAsync() / pageSize);
                 
                 query = query
                     .Include(r => r.Dream)
-                    .Include(r => r.Comments)
-                    .Include(r => r.Tags)
+                    .Include(r => r.Comment)
+                    .Include(r => r.PostTag)
+                        .ThenInclude(t => t.Tag)
                     .Include(r => r.User)
                     .OrderByDescending(p => p.DateCreated)
                     .Skip(index * pageSize)

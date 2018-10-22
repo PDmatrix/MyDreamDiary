@@ -15,6 +15,7 @@ namespace DB.Context
         public virtual DbSet<Dream> Dream { get; set; }
         public virtual DbSet<IdentityUser> IdentityUser { get; set; }
         public virtual DbSet<Post> Post { get; set; }
+        public virtual DbSet<PostTag> PostTag { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
  
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -54,13 +55,13 @@ namespace DB.Context
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.HasOne(d => d.Post)
-                    .WithMany(p => p.Comments)
+                    .WithMany(p => p.Comment)
                     .HasForeignKey(d => d.PostId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("comment_post_id_fk");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Comments)
+                    .WithMany(p => p.Comment)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("comment_identity_user_id_fk");
@@ -149,10 +150,37 @@ namespace DB.Context
                     .HasConstraintName("post_dream_id_fk");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Posts)
+                    .WithMany(p => p.Post)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("post_identity_user_id_fk");
+            });
+
+            modelBuilder.Entity<PostTag>(entity =>
+            {
+                entity.ToTable("post_tag");
+
+                entity.HasIndex(e => e.Id)
+                    .HasName("post_tag_id_uindex")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.PostId).HasColumnName("post_id");
+
+                entity.Property(e => e.TagId).HasColumnName("tag_id");
+
+                entity.HasOne(d => d.Post)
+                    .WithMany(p => p.PostTag)
+                    .HasForeignKey(d => d.PostId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("post_tag_post_id_fk");
+
+                entity.HasOne(d => d.Tag)
+                    .WithMany(p => p.PostTag)
+                    .HasForeignKey(d => d.TagId)
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .HasConstraintName("post_tag_tag_id_fk");
             });
 
             modelBuilder.Entity<Tag>(entity =>
@@ -172,13 +200,6 @@ namespace DB.Context
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name");
-
-                entity.Property(e => e.PostId).HasColumnName("post_id");
-
-                entity.HasOne(d => d.Post)
-                    .WithMany(p => p.Tags)
-                    .HasForeignKey(d => d.PostId)
-                    .HasConstraintName("tag_post_id_fk");
             });
 
             modelBuilder.HasSequence("users_id_seq");

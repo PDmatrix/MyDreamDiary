@@ -19,9 +19,9 @@ namespace DB.Repositories
             {
                 var query = context.Post
                     .AsQueryable()
-                    .Include(r => r.Comments)
+                    .Include(r => r.PostTag)
+                        .ThenInclude(t => t.Tag)
                     .Include(r => r.Dream)
-                    .Include(r => r.Tags)
                     .Include(r => r.User);
                 
                 return await query.FirstAsync(r => r.Id == id);

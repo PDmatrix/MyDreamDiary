@@ -7,8 +7,8 @@ namespace DB.Models
     {
         public Post()
         {
-            Comments = new HashSet<Comment>();
-            Tags = new HashSet<Tag>();
+            Comment = new HashSet<Comment>();
+            PostTag = new HashSet<PostTag>();
         }
 
         public int Id { get; set; }
@@ -20,7 +20,7 @@ namespace DB.Models
 
         public Dream Dream { get; set; }
         public IdentityUser User { get; set; }
-        public ICollection<Comment> Comments { get; set; }
-        public ICollection<Tag> Tags { get; set; }
+        public ICollection<Comment> Comment { get; set; }
+        public ICollection<PostTag> PostTag { get; set; }
     }
 }

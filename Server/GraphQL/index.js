@@ -4,7 +4,7 @@ require("es6-promise").polyfill();
 require("dotenv").config();
 
 const getPage = async (index) => {
-	const url = `http://localhost:5000/api/page/getpage?index=${index != undefined ? index : 0}`; // TODO: Change localhost to actual url
+	const url = `http://localhost:5000/api/page/getpage?index=${index}`; // TODO: Change localhost to actual url
 	const response = await fetch(url);
 	return await response.json();
 };
@@ -26,6 +26,7 @@ const typeDefs = gql`
       currentPage: Int!
       pageSize: Int!
       totalPages: Int!
+
       records: [Post]
   }
 
@@ -34,44 +35,56 @@ const typeDefs = gql`
       likesCount: Int
       dateCreated: String!
       title: String!
-      comments: [Comment]
-      tags: [Tag]
+
+      comment: [Comment]
       dream: Dream
-      identityUser: IdentityUser
+      user: User
+      postTag: [PostTag]
   }
 
   type Tag {
       id: ID!
       name: String!
-      postId: Int!
+      
+      postTag: [PostTag]
   }
 
   type Comment {
       id: ID!
       content: String
       dateCreated: String
+
       post: Post
-      identityUser: IdentityUser
+      user: User
   }
 
   type Dream {
       id: ID!
       content: String
       dreamDate: String
+
       post: Post
   }
 
-  type IdentityUser {
+  type User {
       id: ID!
       name: String!
       email: String!
-      comments: [Comment]
-      posts: [Post]
+
+      comment: [Comment]
+      post: [Post]
+  }
+
+  type PostTag {
+      id: ID!
+
+      post: Post
+      tag: Tag
   }
 
   type Query {
-    getPage(index: Int): Page!
-    getUser(id: Int!): IdentityUser!
+    getPage(index: Int = 0): Page!
+    getUser(id: Int!): User!
     getPost(id: Int!): Post!
   }
 `;

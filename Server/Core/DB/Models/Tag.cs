@@ -1,11 +1,17 @@
-﻿namespace DB.Models
+﻿using System.Collections.Generic;
+
+namespace DB.Models
 {
     public class Tag
     {
+        public Tag()
+        {
+            PostTag = new HashSet<PostTag>();
+        }
+        
         public int Id { get; set; }
         public string Name { get; set; }
-        public int? PostId { get; set; }
 
-        public Post Post { get; set; }
+        public ICollection<PostTag> PostTag { get; set; }
     }
 }
