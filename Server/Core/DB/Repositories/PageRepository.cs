@@ -31,7 +31,8 @@ namespace DB.Repositories
 
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
-                var query = context.Post.AsQueryable(); 
+                var query = context.Post
+                    .AsQueryable();
                 if (tags != null)
                 {
                     var tagsEnumerable = tags as string[] ?? tags.ToArray();
