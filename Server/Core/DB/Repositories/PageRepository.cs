@@ -15,24 +15,15 @@ namespace DB.Repositories
         {
         }
 
-        public async Task<Page<Post>> GetPageAsync(int index)
+        public async Task<Page<object>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags)
         {
-            return await GetPageAsync(index, 10);
-        }
-
-        public async Task<Page<Post>> GetPageAsync(int index, int pageSize)
-        {
-            return await GetPageAsync(index, pageSize, null);
-        }
-
-        public async Task<Page<Post>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags)
-        {
-            var result = new Page<Post> { CurrentPage = index, PageSize = pageSize };
+            var result = new Page<object> { CurrentPage = index, PageSize = pageSize };
 
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
                 var query = context.Post
                     .AsQueryable();
+                
                 if (tags != null)
                 {
                     var tagsEnumerable = tags as string[] ?? tags.ToArray();
@@ -40,17 +31,21 @@ namespace DB.Repositories
                 }
 
                 result.TotalPages = (int)Math.Ceiling((double) await query.CountAsync() / pageSize);
-                
-                query = query
-                    .Include(r => r.Dream)
-                    .Include(r => r.Comment)
-                    .Include(r => r.PostTag)
-                        .ThenInclude(t => t.Tag)
-                    .Include(r => r.User)
-                    .OrderByDescending(p => p.DateCreated)
+
+                var res = query.Select(r => new
+                    {
+                        title = r.Title,
+                        content = r.Dream.Content,
+                        tags = r.PostTag.Select(x => x.Tag.Name),
+                        user = r.User.Name,
+                        likes_count = r.LikesCount,
+                        date_created = r.DateCreated
+                    })
+                    .OrderByDescending(r => r.date_created)
                     .Skip(index * pageSize)
-                    .Take(pageSize); 
-                result.Records = await query.ToListAsync();
+                    .Take(pageSize);
+                
+                result.Records = await res.ToListAsync();
             }
             return result;
 

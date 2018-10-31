@@ -5,6 +5,6 @@ namespace DB.Interfaces
 {
     public interface IUserRepository
     {
-        Task<IdentityUser> GetUser(int id);
+        Task<object> GetUser(int id);
     }
 }

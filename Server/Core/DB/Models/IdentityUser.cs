@@ -7,6 +7,7 @@ namespace DB.Models
         public IdentityUser()
         {
             Comment = new HashSet<Comment>();
+            Dream = new HashSet<Dream>();
             Post = new HashSet<Post>();
         }
 
@@ -15,6 +16,7 @@ namespace DB.Models
         public string Email { get; set; }
 
         public ICollection<Comment> Comment { get; set; }
+        public ICollection<Dream> Dream { get; set; }
         public ICollection<Post> Post { get; set; }
     }
 }

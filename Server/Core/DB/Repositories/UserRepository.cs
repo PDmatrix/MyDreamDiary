@@ -14,16 +14,25 @@ namespace DB.Repositories
         }
 
 
-        public async Task<IdentityUser> GetUser(int id)
+        public async Task<object> GetUser(int id)
         {
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
-                var query = context.IdentityUser
+                return await context.IdentityUser
                     .AsQueryable()
-                    .Include(r => r.Comment)
-                    .Include(r => r.Post);
-                
-                return await query.FirstAsync(r => r.Id == id);
+                    .Select(r => new
+                    {
+                        name = r.Name,
+                        email = r.Email,
+                        comments = r.Comment,
+                        posts = r.Post.Select(x => new
+                        {
+                            id = x.Id,
+                            title = x.Title
+                        }),
+                        id = r.Id
+                    })
+                    .FirstOrDefaultAsync(r => r.id == id);
             }
         }
     }

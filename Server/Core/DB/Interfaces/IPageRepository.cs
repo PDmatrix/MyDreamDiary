@@ -6,8 +6,6 @@ namespace DB.Interfaces
 {
     public interface IPageRepository
     {
-        Task<Page<Post>> GetPageAsync(int index);
-        Task<Page<Post>> GetPageAsync(int index, int pageSize);
-        Task<Page<Post>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags);
+        Task<Page<object>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags);
     }
 }

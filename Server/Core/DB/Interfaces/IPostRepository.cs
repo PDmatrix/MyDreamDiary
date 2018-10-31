@@ -5,6 +5,6 @@ namespace DB.Interfaces
 {
     public interface IPostRepository
     {
-        Task<Post> GetPost(int id);
+        Task<object> GetPost(int id);
     }
 }

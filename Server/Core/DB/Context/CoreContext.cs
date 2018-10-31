@@ -82,6 +82,14 @@ namespace DB.Context
                     .HasColumnName("content");
 
                 entity.Property(e => e.DreamDate).HasColumnName("dream_date");
+
+                entity.Property(e => e.UserId).HasColumnName("user_id");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Dream)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("dream_identity_user_id_fk");
             });
 
             modelBuilder.Entity<IdentityUser>(entity =>
