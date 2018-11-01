@@ -11,8 +11,6 @@ namespace Core
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Environment.GetEnvironmentVariable("ASPNETCORE_CONNECTION_STRING") ??
@@ -23,6 +21,7 @@ namespace Core
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
             services.AddScoped<ICoreContextFactory, CoreContextFactory>();
 
             services.AddScoped<IPageRepository>(
@@ -38,7 +37,6 @@ namespace Core
                     provider.GetService<ICoreContextFactory>()));
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -47,7 +45,7 @@ namespace Core
             }
 
             app.UseCors();
-
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

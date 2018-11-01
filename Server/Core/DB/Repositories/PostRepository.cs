@@ -29,7 +29,22 @@ namespace DB.Repositories
                         date_created = r.DateCreated,
                         id = r.Id
                     })
-                    .FirstOrDefaultAsync(r => r.id == id);
+                    .SingleOrDefaultAsync(r => r.id == id);
+            }
+        }
+
+        public async Task<object> AddPost(int userId, int dreamId, string title)
+        {
+            using (var context = ContextFactory.CreateDbContext(ConnectionString))
+            {
+                var res = await context.Post.AddAsync(new Post {UserId = userId, DreamId = dreamId, Title = title});
+                await context.SaveChangesAsync();
+                return new
+                {
+                    id = res.Entity.Id,
+                    title = res.Entity.Title,
+                    date = res.Entity.DateCreated
+                };
             }
         }
     }

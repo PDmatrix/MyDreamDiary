@@ -5,7 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Core.Controllers
 {
     [Route("api/[controller]")]
-    public class PageController : Controller
+    [ApiController]
+    public class PageController : ControllerBase
     {
         private readonly IPageRepository _pageRepository;
 
@@ -14,11 +15,10 @@ namespace Core.Controllers
             _pageRepository = pageRepository;
         }
         
-        [Route("getpage")]
-        [HttpGet]
-        public async Task<IActionResult> GetPage(int index)
+        [HttpGet("{index=1}")]
+        public async Task<IActionResult> GetPage([FromRoute] int index,[FromQuery] int pageSize = 10,[FromQuery] string tags = null)
         {
-            return Json(await _pageRepository.GetPageAsync(index));
+            return Ok(await _pageRepository.GetPageAsync(index, pageSize, tags?.Split(",")));
         }
         
     }

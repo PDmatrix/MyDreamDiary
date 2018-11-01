@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using DB.Interfaces;
@@ -13,13 +14,28 @@ namespace DB.Repositories
         {
         }
 
-
+        public async Task<object> AddDream(Dream dream)
+        {
+            using (var context = ContextFactory.CreateDbContext(ConnectionString))
+            {
+                var res = await context.Dream.AddAsync(dream);
+                await context.SaveChangesAsync();
+                return new
+                {
+                    id = res.Entity.Id,
+                    content = res.Entity.Content,
+                    date = res.Entity.DreamDate
+                };
+            }
+        }
+        
         public async Task<object> GetUser(int id)
         {
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
                 return await context.IdentityUser
                     .AsQueryable()
+                    .AsNoTracking()
                     .Select(r => new
                     {
                         name = r.Name,
@@ -32,7 +48,7 @@ namespace DB.Repositories
                         }),
                         id = r.Id
                     })
-                    .FirstOrDefaultAsync(r => r.id == id);
+                    .SingleOrDefaultAsync(r => r.id == id);
             }
         }
     }

@@ -4,19 +4,19 @@ require("es6-promise").polyfill();
 require("dotenv").config();
 
 const getPage = async (index) => {
-	const url = `http://localhost:5000/api/page/getpage?index=${index}`; // TODO: Change localhost to actual url
+	const url = `http://localhost:5000/api/page/get_page?index=${index}`; // TODO: Change localhost to actual url
 	const response = await fetch(url);
 	return await response.json();
 };
 
 const getUser = async (id) => {
-	const url = `http://localhost:5000/api/user/getuser?id=${id}`; // TODO: Change localhost to actual url
+	const url = `http://localhost:5000/api/user/get_user?id=${id}`; // TODO: Change localhost to actual url
 	const response = await fetch(url);
 	return await response.json();
 };
 
 const getPost = async (id) => {
-	const url = `http://localhost:5000/api/post/getpost?id=${id}`; // TODO: Change localhost to actual url
+	const url = `http://localhost:5000/api/post/get_post?id=${id}`; // TODO: Change localhost to actual url
 	const response = await fetch(url);
 	return await response.json();
 };

@@ -22,7 +22,8 @@ namespace DB.Repositories
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
                 var query = context.Post
-                    .AsQueryable();
+                    .AsQueryable()
+                    .AsNoTracking();
                 
                 if (tags != null)
                 {
@@ -32,7 +33,8 @@ namespace DB.Repositories
 
                 result.TotalPages = (int)Math.Ceiling((double) await query.CountAsync() / pageSize);
 
-                var res = query.Select(r => new
+                var res = query
+                    .Select(r => new
                     {
                         title = r.Title,
                         content = r.Dream.Content,
@@ -42,7 +44,7 @@ namespace DB.Repositories
                         date_created = r.DateCreated
                     })
                     .OrderByDescending(r => r.date_created)
-                    .Skip(index * pageSize)
+                    .Skip((index - 1) * pageSize)
                     .Take(pageSize);
                 
                 result.Records = await res.ToListAsync();
