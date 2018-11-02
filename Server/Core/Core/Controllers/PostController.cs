@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Core.InputDTO;
 using Core.Util;
 using DB.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -7,6 +8,7 @@ namespace Core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Consumes("application/json")]
     public class PostController : ControllerBase
     {
         private readonly IPostRepository _postRepository;
@@ -17,22 +19,26 @@ namespace Core.Controllers
         }
         
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetPost([FromRoute] int id)
+        [ProducesResponseType(404)]
+        [ProducesResponseType(200)]
+        public async Task<ActionResult<object>> GetPost([FromRoute] int id)
         {
-            return Ok(await _postRepository.GetPost(id));
-        }
-        
-        // TODO: Extract in separate file
-        public class AddPostBody
-        {
-            public int UserId { get; set; }
-            public int DreamId { get; set; }
-            public string Title { get; set; }
+            var post = await _postRepository.GetPost(id);
+
+            if (post == null)
+                return NotFound();
+            
+            return Ok(post);
         }
         
         [HttpPost]
-        public async Task<IActionResult> AddPost([FromBody] AddPostBody body)
+        [ProducesResponseType(201)]
+        public async Task<ActionResult<object>> AddPost([FromBody] AddPostDto body)
         {
+            //(await new GetPageDtoValidator().ValidateAsync(pageGetDto)).AddToModelState(ModelState, null);
+            //if (!ModelState.IsValid)
+                //return BadRequest(ModelState);
+            
             // TODO: Add model validation
             var newPost = await _postRepository.AddPost(body.UserId, body.DreamId, body.Title);
             return CreatedAtAction(nameof(GetPost), 

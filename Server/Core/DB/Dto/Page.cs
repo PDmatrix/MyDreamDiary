@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DB.Models
+namespace DB.Dto
 {
     public class Page<T>
     {

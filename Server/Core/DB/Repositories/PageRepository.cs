@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using DB.Dto;
 using DB.Interfaces;
-using DB.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DB.Repositories
@@ -15,9 +15,9 @@ namespace DB.Repositories
         {
         }
 
-        public async Task<Page<object>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags)
+        public async Task<Page<PageDto>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags)
         {
-            var result = new Page<object> { CurrentPage = index, PageSize = pageSize };
+            var result = new Page<PageDto> { CurrentPage = index, PageSize = pageSize };
 
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
@@ -34,16 +34,16 @@ namespace DB.Repositories
                 result.TotalPages = (int)Math.Ceiling((double) await query.CountAsync() / pageSize);
 
                 var res = query
-                    .Select(r => new
+                    .Select(r => new PageDto
                     {
-                        title = r.Title,
-                        content = r.Dream.Content,
-                        tags = r.PostTag.Select(x => x.Tag.Name),
-                        user = r.User.Name,
-                        likes_count = r.LikesCount,
-                        date_created = r.DateCreated
+                        Title = r.Title,
+                        Content = r.Dream.Content,
+                        Tags = r.PostTag.Select(x => x.Tag.Name).ToArray(),
+                        Username = r.User.Name,
+                        LikesCount = r.LikesCount,
+                        DateCreated = r.DateCreated
                     })
-                    .OrderByDescending(r => r.date_created)
+                    .OrderByDescending(r => r.DateCreated)
                     .Skip((index - 1) * pageSize)
                     .Take(pageSize);
                 

@@ -1,11 +1,15 @@
 using System.Threading.Tasks;
+using Core.InputDTO;
+using DB.Dto;
 using DB.Interfaces;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Consumes("application/json")]
     public class PageController : ControllerBase
     {
         private readonly IPageRepository _pageRepository;
@@ -16,9 +20,15 @@ namespace Core.Controllers
         }
         
         [HttpGet("{index=1}")]
-        public async Task<IActionResult> GetPage([FromRoute] int index,[FromQuery] int pageSize = 10,[FromQuery] string tags = null)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<ActionResult<Page<PageDto>>> GetPage([FromRoute] int index, [FromQuery] GetPageDto getPageDto)
         {
-            return Ok(await _pageRepository.GetPageAsync(index, pageSize, tags?.Split(",")));
+            (await new GetPageDtoValidator().ValidateAsync(getPageDto)).AddToModelState(ModelState, null);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
+            return Ok(await _pageRepository.GetPageAsync(index, getPageDto.PageSize, getPageDto.GetTags()));
         }
         
     }

@@ -1,16 +1,15 @@
 ﻿using System;
 
-namespace DB.Models
+namespace DB.Entity
 {
-    public class Comment
+    public class Dream
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public int PostId { get; set; }
-        public DateTime? DateCreated { get; set; }
+        public DateTime DreamDate { get; set; }
         public int UserId { get; set; }
 
-        public Post Post { get; set; }
         public IdentityUser User { get; set; }
+        public Post Post { get; set; }
     }
 }

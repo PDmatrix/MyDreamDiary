@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using NJsonSchema;
+using NSwag.AspNetCore;
 
 namespace Core
 {
@@ -21,6 +23,8 @@ namespace Core
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
                 .AddJsonOptions(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddSwagger();
 
             services.AddScoped<ICoreContextFactory, CoreContextFactory>();
 
@@ -45,6 +49,12 @@ namespace Core
             }
 
             app.UseCors();
+            
+            app.UseSwaggerUi3WithApiExplorer(settings =>
+            {
+                settings.GeneratorSettings.DefaultPropertyNameHandling = 
+                    PropertyNameHandling.CamelCase;
+            });
             
             app.UseMvc(routes =>
             {

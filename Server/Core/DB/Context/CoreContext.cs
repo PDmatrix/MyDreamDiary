@@ -1,5 +1,5 @@
 ﻿using System;
-using DB.Models;
+using DB.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace DB.Context
@@ -17,7 +17,7 @@ namespace DB.Context
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<PostTag> PostTag { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
- 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -141,9 +141,7 @@ namespace DB.Context
 
                 entity.Property(e => e.DreamId).HasColumnName("dream_id");
 
-                entity.Property(e => e.LikesCount)
-                    .HasColumnName("likes_count")
-                    .HasDefaultValueSql("0");
+                entity.Property(e => e.LikesCount).HasColumnName("likes_count");
 
                 entity.Property(e => e.Title)
                     .IsRequired()
