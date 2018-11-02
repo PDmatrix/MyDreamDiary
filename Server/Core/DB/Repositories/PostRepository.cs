@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
+using DB.Entity;
 using DB.Interfaces;
-using DB.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DB.Repositories

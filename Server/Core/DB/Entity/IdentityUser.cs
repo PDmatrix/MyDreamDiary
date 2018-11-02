@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DB.Models
+namespace DB.Entity
 {
     public class IdentityUser
     {

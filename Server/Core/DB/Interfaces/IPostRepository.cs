@@ -1,5 +1,4 @@
 using System.Threading.Tasks;
-using DB.Models;
 
 namespace DB.Interfaces
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DB.Models
+namespace DB.Entity
 {
     public class Tag
     {
@@ -8,7 +8,7 @@ namespace DB.Models
         {
             PostTag = new HashSet<PostTag>();
         }
-        
+
         public int Id { get; set; }
         public string Name { get; set; }
 

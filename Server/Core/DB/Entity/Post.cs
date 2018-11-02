@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DB.Models
+namespace DB.Entity
 {
     public class Post
     {
@@ -12,10 +12,10 @@ namespace DB.Models
         }
 
         public int Id { get; set; }
-        public int? LikesCount { get; set; }
+        public int LikesCount { get; set; }
         public string Title { get; set; }
         public int DreamId { get; set; }
-        public DateTime? DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
         public int UserId { get; set; }
 
         public Dream Dream { get; set; }
