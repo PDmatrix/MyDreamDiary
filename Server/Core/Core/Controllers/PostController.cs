@@ -1,13 +1,17 @@
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.InputDTO;
-using Core.Util;
+using DB.Dto;
 using DB.Interfaces;
+using DB.OutputDto;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Controllers
 {
+	[ApiController]
     [Route("api/[controller]")]
-    [ApiController]
     [Consumes("application/json")]
     public class PostController : ControllerBase
     {
@@ -19,11 +23,11 @@ namespace Core.Controllers
         }
         
         [HttpGet("{id}")]
-        [ProducesResponseType(404)]
         [ProducesResponseType(200)]
-        public async Task<ActionResult<object>> GetPost([FromRoute] int id)
+        [ProducesResponseType(404)]
+        public async Task<ActionResult<GetPostDtoOut>> GetPost([FromRoute] int id)
         {
-            var post = await _postRepository.GetPost(id);
+            var post = await _postRepository.GetPostAsync(id);
 
             if (post == null)
                 return NotFound();
@@ -31,18 +35,20 @@ namespace Core.Controllers
             return Ok(post);
         }
         
+	    [Authorize]
         [HttpPost]
         [ProducesResponseType(201)]
-        public async Task<ActionResult<object>> AddPost([FromBody] AddPostDto body)
+        [ProducesResponseType(400)]
+        [ProducesResponseType(401)]
+        public async Task<ActionResult<AddPostDtoOut>> AddPost([FromBody] AddPostDtoIn body)
         {
-            //(await new GetPageDtoValidator().ValidateAsync(pageGetDto)).AddToModelState(ModelState, null);
-            //if (!ModelState.IsValid)
-                //return BadRequest(ModelState);
-            
-            // TODO: Add model validation
-            var newPost = await _postRepository.AddPost(body.UserId, body.DreamId, body.Title);
-            return CreatedAtAction(nameof(GetPost), 
-                new { id = UtilHelper.GetValueFromAnonymousType<int>(newPost, "id") }, newPost);
+            (await new AddPostDtoInValidator().ValidateAsync(body)).AddToModelState(ModelState, null);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);            
+	        
+	        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var newPost = await _postRepository.AddPostAsync(userId, body.DreamId, body.Title);
+            return CreatedAtAction(nameof(GetPost), newPost.Id, newPost);
         }
     }
 }

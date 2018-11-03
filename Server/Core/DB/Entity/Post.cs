@@ -16,7 +16,7 @@ namespace DB.Entity
         public string Title { get; set; }
         public int DreamId { get; set; }
         public DateTime DateCreated { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 
         public Dream Dream { get; set; }
         public IdentityUser User { get; set; }

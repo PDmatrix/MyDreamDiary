@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Controllers
 {
+	[ApiController]
     [Route("api/[controller]")]
-    [ApiController]
     [Consumes("application/json")]
     public class PageController : ControllerBase
     {
@@ -22,13 +22,13 @@ namespace Core.Controllers
         [HttpGet("{index=1}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<Page<PageDto>>> GetPage([FromRoute] int index, [FromQuery] GetPageDto getPageDto)
+        public async Task<ActionResult<Page<PageDtoOut>>> GetPage([FromRoute] int index, [FromQuery] GetPageDtoIn getPageDtoIn)
         {
-            (await new GetPageDtoValidator().ValidateAsync(getPageDto)).AddToModelState(ModelState, null);
+            (await new GetPageDtoInValidator().ValidateAsync(getPageDtoIn)).AddToModelState(ModelState, null);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
-            return Ok(await _pageRepository.GetPageAsync(index, getPageDto.PageSize, getPageDto.GetTags()));
+            return Ok(await _pageRepository.GetPageAsync(index, getPageDtoIn.PageSize, getPageDtoIn.GetTags()));
         }
         
     }

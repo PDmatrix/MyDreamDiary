@@ -15,9 +15,9 @@ namespace DB.Repositories
         {
         }
 
-        public async Task<Page<PageDto>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags)
+        public async Task<Page<PageDtoOut>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags)
         {
-            var result = new Page<PageDto> { CurrentPage = index, PageSize = pageSize };
+            var result = new Page<PageDtoOut> { CurrentPage = index, PageSize = pageSize };
 
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
@@ -34,14 +34,15 @@ namespace DB.Repositories
                 result.TotalPages = (int)Math.Ceiling((double) await query.CountAsync() / pageSize);
 
                 var res = query
-                    .Select(r => new PageDto
+                    .Select(r => new PageDtoOut
                     {
                         Title = r.Title,
                         Content = r.Dream.Content,
                         Tags = r.PostTag.Select(x => x.Tag.Name).ToArray(),
                         Username = r.User.Name,
                         LikesCount = r.LikesCount,
-                        DateCreated = r.DateCreated
+                        DateCreated = r.DateCreated,
+	                    Id = r.Id
                     })
                     .OrderByDescending(r => r.DateCreated)
                     .Skip((index - 1) * pageSize)

@@ -26,7 +26,7 @@ namespace DB.Context
                     Environment.GetEnvironmentVariable(
                         "ASPNETCORE_CONNECTION_STRING") ??
                     throw new ArgumentException(
-                        "There is no ASPNETCORE_CONNECTION_STRING provided")); 
+                        "There is no ASPNETCORE_CONNECTION_STRING provided"));
             }
         }
 
@@ -52,7 +52,9 @@ namespace DB.Context
 
                 entity.Property(e => e.PostId).HasColumnName("post_id");
 
-                entity.Property(e => e.UserId).HasColumnName("user_id");
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasColumnName("user_id");
 
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.Comment)
@@ -63,7 +65,6 @@ namespace DB.Context
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Comment)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("comment_identity_user_id_fk");
             });
 
@@ -83,12 +84,13 @@ namespace DB.Context
 
                 entity.Property(e => e.DreamDate).HasColumnName("dream_date");
 
-                entity.Property(e => e.UserId).HasColumnName("user_id");
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasColumnName("user_id");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Dream)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("dream_identity_user_id_fk");
             });
 
@@ -110,7 +112,7 @@ namespace DB.Context
 
                 entity.Property(e => e.Id)
                     .HasColumnName("id")
-                    .HasDefaultValueSql("nextval('users_id_seq'::regclass)");
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.Email)
                     .IsRequired()
@@ -147,7 +149,9 @@ namespace DB.Context
                     .IsRequired()
                     .HasColumnName("title");
 
-                entity.Property(e => e.UserId).HasColumnName("user_id");
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasColumnName("user_id");
 
                 entity.HasOne(d => d.Dream)
                     .WithOne(p => p.Post)
@@ -158,7 +162,6 @@ namespace DB.Context
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Post)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("post_identity_user_id_fk");
             });
 
@@ -179,13 +182,11 @@ namespace DB.Context
                 entity.HasOne(d => d.Post)
                     .WithMany(p => p.PostTag)
                     .HasForeignKey(d => d.PostId)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("post_tag_post_id_fk");
 
                 entity.HasOne(d => d.Tag)
                     .WithMany(p => p.PostTag)
                     .HasForeignKey(d => d.TagId)
-                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("post_tag_tag_id_fk");
             });
 

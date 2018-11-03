@@ -4,9 +4,9 @@ using FluentValidation;
 
 namespace Core.InputDTO
 {
-    public class GetPageDto
+    public class GetPageDtoIn
     {
-        public int PageSize { get; set; }
+        public int PageSize { get; set; } = 5;
         public string Tags { get; set; }
 
         public IEnumerable<string> GetTags()
@@ -15,8 +15,8 @@ namespace Core.InputDTO
         }
     }
     
-    public class GetPageDtoValidator: AbstractValidator<GetPageDto> {
-        public GetPageDtoValidator()
+    public class GetPageDtoInValidator: AbstractValidator<GetPageDtoIn> {
+        public GetPageDtoInValidator()
         {
             RuleFor(r => r.PageSize).GreaterThan(0).WithMessage("PageSize must be greater than zero");
         }
