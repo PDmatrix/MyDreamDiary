@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace DB.Dto
+namespace DB.OutputDto
 {
     public class PageDtoOut
     {
@@ -12,5 +12,6 @@ namespace DB.Dto
         public int LikesCount { get; set; }
         public DateTime DateCreated { get; set; }
 	    public int Id { get; set; }
+	    public bool IsLiked { get; set; }
    }
 }

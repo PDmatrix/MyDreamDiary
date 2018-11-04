@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using DB.Dto;
 
 namespace DB.OutputDto
 {
@@ -14,5 +13,6 @@ namespace DB.OutputDto
 		public DateTime DateCreated { get; set; }
 		public IEnumerable<string> Tags { get; set; }
 		public int Id { get; set; }
+		public bool IsLiked { get; set; }
 	}
 }

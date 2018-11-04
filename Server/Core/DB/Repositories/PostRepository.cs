@@ -1,10 +1,10 @@
 using System.Linq;
 using System.Threading.Tasks;
-using DB.Dto;
 using DB.Entity;
 using DB.Interfaces;
 using DB.OutputDto;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace DB.Repositories
 {
@@ -15,7 +15,7 @@ namespace DB.Repositories
         {
         }
 
-        public async Task<GetPostDtoOut> GetPostAsync(int id)
+        public async Task<GetPostDtoOut> GetPostAsync(int id, string userId)
         {
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
@@ -35,7 +35,9 @@ namespace DB.Repositories
 	                    Tags = r.PostTag.Select(x => x.Tag.Name).ToArray(),
                         LikesCount = r.LikesCount,
                         DateCreated = r.DateCreated,
-                        Id = r.Id
+                        Id = r.Id,
+	                    IsLiked = userId != null &&
+	                              r.UserLike.FirstOrDefault(x => x.PostId == r.Id && x.UserId == userId) != null
                     })
                     .SingleOrDefaultAsync(r => r.Id == id);
             }
@@ -55,5 +57,50 @@ namespace DB.Repositories
                 };
             }
         }
+
+	    public async Task<CommentDtoOut> AddCommentAsync(string userId, int postId, string content)
+	    {
+		    using (var context = ContextFactory.CreateDbContext(ConnectionString))
+		    {
+			    var res = await context.Comment.AddAsync(new Comment {Content = content, PostId = postId, UserId = userId});
+			    await context.SaveChangesAsync();
+			    return new CommentDtoOut
+			    {
+				    Id = res.Entity.Id,
+				    Content = res.Entity.Content,
+				    DateCreated = res.Entity.DateCreated
+			    };
+		    }
+	    }
+
+	    public async Task<CommentDtoOut> GetCommentAsync(int id)
+	    {
+		    using (var context = ContextFactory.CreateDbContext(ConnectionString))
+		    {
+			    return await context.Comment
+				    .AsQueryable()
+				    .Select(r => new CommentDtoOut
+				    {
+					    Content = r.Content,
+					    Id = r.Id,
+					    DateCreated = r.DateCreated
+				    })
+				    .SingleOrDefaultAsync(r => r.Id == id);
+		    }
+	    }
+
+	    public async Task LikeAsync(int id, string userId)
+	    {
+		    using (var context = ContextFactory.CreateDbContext(ConnectionString))
+		    {
+			    var like = await context.UserLike
+				                  .SingleOrDefaultAsync(r => r.PostId == id && r.UserId == userId);
+
+			    if (like == null)
+				    await context.UserLike.AddAsync(new UserLike {PostId = id, UserId = userId});
+			    else
+				    context.UserLike.Remove(like);
+		    }
+	    }
     }
 }

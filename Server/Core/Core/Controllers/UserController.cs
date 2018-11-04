@@ -1,7 +1,6 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.InputDTO;
-using DB.Dto;
 using DB.Interfaces;
 using DB.OutputDto;
 using FluentValidation.AspNetCore;
@@ -48,9 +47,27 @@ namespace Core.Controllers
             
             return Ok(dream);
         }
+	    
+	    [Authorize]
+	    [HttpPost]
+	    [ProducesResponseType(201)]
+	    [ProducesResponseType(400)]
+	    [ProducesResponseType(401)]
+	    public async Task<ActionResult<AddUserDtoOut>> AddUser()
+	    {
+		    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+		    var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+		    var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
+
+		    if (userId == null || userName == null || userEmail == null)
+			    return BadRequest();
+		    
+		    var res = await _userRepository.AddUserAsync(userId, userName, userEmail);
+		    return CreatedAtAction(nameof(GetUser), new { id = res.Id }, res);
+	    }
         
 	    [Authorize]
-        [HttpPost("{id}/dream")]
+        [HttpPost("dream")]
         [ProducesResponseType(201)]
 	    [ProducesResponseType(401)]
 	    [ProducesResponseType(404)]
@@ -62,7 +79,7 @@ namespace Core.Controllers
             
 	        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var res = await _userRepository.AddDreamAsync(userId, dream.Content, dream.DreamDate);
-            return CreatedAtAction(nameof(GetDream), res.Id, res);
+            return CreatedAtAction(nameof(GetDream), new { id = res.Id }, res);
         }
     }
 }

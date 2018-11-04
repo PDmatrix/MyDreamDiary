@@ -1,6 +1,6 @@
 using System;
 
-namespace DB.Dto
+namespace DB.OutputDto
 {
 	public class AddPostDtoOut
 	{

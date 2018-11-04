@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DB.Dto;
 using DB.Interfaces;
+using DB.OutputDto;
 using Microsoft.EntityFrameworkCore;
 
 namespace DB.Repositories
@@ -15,7 +15,7 @@ namespace DB.Repositories
         {
         }
 
-        public async Task<Page<PageDtoOut>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags)
+        public async Task<Page<PageDtoOut>> GetPageAsync(int index, int pageSize, IEnumerable<string> tags, string userId)
         {
             var result = new Page<PageDtoOut> { CurrentPage = index, PageSize = pageSize };
 
@@ -42,7 +42,9 @@ namespace DB.Repositories
                         Username = r.User.Name,
                         LikesCount = r.LikesCount,
                         DateCreated = r.DateCreated,
-	                    Id = r.Id
+	                    Id = r.Id,
+	                    IsLiked = userId != null &&
+		                    r.UserLike.FirstOrDefault(x => x.PostId == r.Id && x.UserId == userId) != null
                     })
                     .OrderByDescending(r => r.DateCreated)
                     .Skip((index - 1) * pageSize)

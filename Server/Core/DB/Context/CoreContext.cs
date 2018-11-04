@@ -17,6 +17,7 @@ namespace DB.Context
         public virtual DbSet<Post> Post { get; set; }
         public virtual DbSet<PostTag> PostTag { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
+        public virtual DbSet<UserLike> UserLike { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -207,6 +208,33 @@ namespace DB.Context
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasColumnName("name");
+            });
+
+            modelBuilder.Entity<UserLike>(entity =>
+            {
+                entity.ToTable("user_like");
+
+                entity.HasIndex(e => e.Id)
+                    .HasName("user_like_id_uindex")
+                    .IsUnique();
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.PostId).HasColumnName("post_id");
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasColumnName("user_id");
+
+                entity.HasOne(d => d.Post)
+                    .WithMany(p => p.UserLike)
+                    .HasForeignKey(d => d.PostId)
+                    .HasConstraintName("user_like_post_id_fk");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.UserLike)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("user_like_identity_user_id_fk");
             });
 
             modelBuilder.HasSequence("users_id_seq");

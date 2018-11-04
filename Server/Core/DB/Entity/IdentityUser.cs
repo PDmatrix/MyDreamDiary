@@ -9,6 +9,7 @@ namespace DB.Entity
             Comment = new HashSet<Comment>();
             Dream = new HashSet<Dream>();
             Post = new HashSet<Post>();
+            UserLike = new HashSet<UserLike>();
         }
 
         public string Id { get; set; }
@@ -18,5 +19,6 @@ namespace DB.Entity
         public ICollection<Comment> Comment { get; set; }
         public ICollection<Dream> Dream { get; set; }
         public ICollection<Post> Post { get; set; }
+        public ICollection<UserLike> UserLike { get; set; }
     }
 }

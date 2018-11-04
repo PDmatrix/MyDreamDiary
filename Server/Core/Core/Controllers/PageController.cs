@@ -1,7 +1,8 @@
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Core.InputDTO;
-using DB.Dto;
 using DB.Interfaces;
+using DB.OutputDto;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +29,8 @@ namespace Core.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
-            return Ok(await _pageRepository.GetPageAsync(index, getPageDtoIn.PageSize, getPageDtoIn.GetTags()));
+	        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            return Ok(await _pageRepository.GetPageAsync(index, getPageDtoIn.PageSize, getPageDtoIn.GetTags(), userId));
         }
         
     }

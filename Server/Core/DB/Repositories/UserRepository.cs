@@ -1,7 +1,6 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using DB.Dto;
 using DB.Entity;
 using DB.Interfaces;
 using DB.OutputDto;
@@ -32,7 +31,23 @@ namespace DB.Repositories
             }
         }
 
-        public async Task<GetDreamDtoOut> GetDreamAsync(int id)
+	    public async Task<AddUserDtoOut> AddUserAsync(string id, string name, string email)
+	    {
+		    using (var context = ContextFactory.CreateDbContext(ConnectionString))
+		    {
+			    var newUser = new IdentityUser {Id = id, Email = email, Name = name};
+			    var res = await context.IdentityUser.AddAsync(newUser);
+			    await context.SaveChangesAsync();
+			    return new AddUserDtoOut
+			    {
+				    Id = res.Entity.Id,
+				    Name = res.Entity.Name,
+				    Email = res.Entity.Email
+			    };
+		    }
+	    }
+
+	    public async Task<GetDreamDtoOut> GetDreamAsync(int id)
         {
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {

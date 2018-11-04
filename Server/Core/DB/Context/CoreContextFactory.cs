@@ -6,8 +6,6 @@ using Microsoft.Extensions.Logging.Console;
 
 namespace DB.Context
 {
-	
-	
     public class CoreContextFactory : ICoreContextFactory
     {
 	    private static readonly LoggerFactory LoggerFactory

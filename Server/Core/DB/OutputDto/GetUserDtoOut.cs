@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace DB.Dto
+namespace DB.OutputDto
 {
 	public class GetUserDtoOut
 	{

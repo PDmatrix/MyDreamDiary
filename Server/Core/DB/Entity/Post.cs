@@ -9,6 +9,7 @@ namespace DB.Entity
         {
             Comment = new HashSet<Comment>();
             PostTag = new HashSet<PostTag>();
+            UserLike = new HashSet<UserLike>();
         }
 
         public int Id { get; set; }
@@ -22,5 +23,6 @@ namespace DB.Entity
         public IdentityUser User { get; set; }
         public ICollection<Comment> Comment { get; set; }
         public ICollection<PostTag> PostTag { get; set; }
+        public ICollection<UserLike> UserLike { get; set; }
     }
 }
