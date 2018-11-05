@@ -44,7 +44,8 @@ namespace DB.Repositories
                         DateCreated = r.DateCreated,
 	                    Id = r.Id,
 	                    IsLiked = userId != null &&
-		                    r.UserLike.FirstOrDefault(x => x.PostId == r.Id && x.UserId == userId) != null
+		                    r.UserLike.FirstOrDefault(x => x.PostId == r.Id && x.UserId == userId) != null,
+	                    CommentsCount = r.Comment.Count
                     })
                     .OrderByDescending(r => r.DateCreated)
                     .Skip((index - 1) * pageSize)

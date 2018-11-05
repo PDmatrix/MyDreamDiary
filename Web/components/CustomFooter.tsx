@@ -3,6 +3,7 @@ import Next from "next";
 import React from "react";
 import css from "styled-jsx/css";
 
+// language=CSS
 const { className, styles } = css.resolve`
 	div {
 		text-align: center;

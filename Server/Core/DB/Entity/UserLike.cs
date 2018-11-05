@@ -1,6 +1,4 @@
-﻿using DB.Entity;
-
-namespace DB
+﻿namespace DB.Entity
 {
     public class UserLike
     {

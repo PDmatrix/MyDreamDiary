@@ -13,5 +13,6 @@ namespace DB.OutputDto
         public DateTime DateCreated { get; set; }
 	    public int Id { get; set; }
 	    public bool IsLiked { get; set; }
+	    public int CommentsCount { get; set; }
    }
 }

@@ -8,6 +8,8 @@ import ru_RU from "antd/lib/locale-provider/ru_RU";
 import Head from "next/head";
 import CustomFooter from "../components/CustomFooter";
 import CustomHeader from "../components/CustomHeader";
+import CustomContent from "../components/CustomContent";
+import "antd/dist/antd.css";
 
 export default class MyApp extends App {
 	componentDidMount() {
@@ -17,7 +19,6 @@ export default class MyApp extends App {
 
 	render() {
 		const { Component, pageProps, router } = this.props;
-		console.log(router);
 		return (
 			<Container>
 				<Head>
@@ -25,10 +26,10 @@ export default class MyApp extends App {
 				</Head>
 				<LocaleProvider locale={ru_RU}>
 					<Layout>
-						<CustomHeader />
-						<Layout.Content>
+						<CustomHeader currentRoute={router.pathname} />
+						<CustomContent>
 							<Component {...pageProps} />
-						</Layout.Content>
+						</CustomContent>
 						<CustomFooter text="Dmatrix, 2018. Все права защищены." />
 					</Layout>
 				</LocaleProvider>

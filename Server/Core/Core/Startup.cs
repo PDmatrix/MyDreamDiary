@@ -73,7 +73,7 @@ namespace Core
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors();
+            app.UseCors(builder => builder.AllowAnyOrigin());
             
             app.UseSwaggerUi3WithApiExplorer(settings =>
             {
