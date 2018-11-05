@@ -1,0 +1,22 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended",
+        "tslint-react",
+        "tslint-config-prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+        "indent": [
+            true,
+            "tabs"
+        ],
+        "jsx-no-multiline-js": [
+            false
+        ],
+        "member-access": [
+            false
+        ]
+    },
+    "rulesDirectory": []
+}

@@ -1,20 +1,18 @@
-import React, { useState } from "react";
-import axios from "axios";
 import Next from "next";
+import React from "react";
+import { Segment } from "../components/Segment";
 
-const Index : Next.NextSFC = () => {
-    const [id, setId] = useState(0);
-    return (
-        <>
-            {id}
-            <button onClick={() => setId(id + 1)}>Click</button>
-        </>
-    );
+const Index: Next.NextSFC = () => {
+	return (
+		<Segment>
+			<p>Hello</p>
+		</Segment>
+	);
 };
 
-Index.getInitialProps = async () => {
-    const res = await axios.get("https://api.github.com/repos/zeit/next.js");
-    return { elems : res.data };
-};
+/*Index.getInitialProps = async () => {
+	const res = await axios.get("https://api.github.com/repos/zeit/next.js");
+	return { elems: res.data };
+};*/
 
 export default Index;

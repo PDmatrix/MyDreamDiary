@@ -1,2 +1,29 @@
 const withTypescript = require("next-with-typescript");
-module.exports = withTypescript();
+const withCss = require("@zeit/next-css");
+require("dotenv").config();
+
+const path = require("path");
+const Dotenv = require("dotenv-webpack");
+
+// fix: prevents error when .css files are required by node
+if (typeof require !== "undefined") {
+	// eslint-disable-next-line no-unused-vars
+	require.extensions[".css"] = (file) => {};
+}
+
+module.exports = withCss(
+	withTypescript({
+		webpack: (config) => {
+			config.plugins = config.plugins || [];
+			config.plugins = [
+				...config.plugins,
+				// Read the .env file
+				new Dotenv({
+					path: path.join(__dirname, ".env"),
+					systemvars: true,
+				}),
+			];
+			return config;
+		},
+	})
+);
