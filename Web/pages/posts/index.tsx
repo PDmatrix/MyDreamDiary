@@ -2,7 +2,7 @@ import { Pagination } from "antd";
 import axios from "axios";
 import Next from "next";
 import React, { useState } from "react";
-import PostList from "../../components/PostList";
+import PostList from "../../components/Page/PostList";
 
 const loadPageDate = async (index = 1) => {
 	const res = await axios.get(`http://localhost:5000/api/page/${index}`);

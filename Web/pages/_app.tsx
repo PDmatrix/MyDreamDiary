@@ -4,12 +4,12 @@ import App, { Container } from "next/app";
 import React from "react";
 
 import { Layout, LocaleProvider } from "antd";
+import "antd/dist/antd.css";
 import ru_RU from "antd/lib/locale-provider/ru_RU";
 import Head from "next/head";
-import CustomFooter from "../components/CustomFooter";
-import CustomHeader from "../components/CustomHeader";
-import CustomContent from "../components/CustomContent";
-import "antd/dist/antd.css";
+import CustomContent from "../components/Main/CustomContent";
+import CustomFooter from "../components/Main/CustomFooter";
+import CustomHeader from "../components/Main/CustomHeader";
 
 export default class MyApp extends App {
 	componentDidMount() {

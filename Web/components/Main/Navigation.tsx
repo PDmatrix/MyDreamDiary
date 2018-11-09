@@ -8,7 +8,6 @@ import css from "styled-jsx/css";
 const { className, styles } = css.resolve`
 	ul {
 		line-height: 64px;
-		float: right;
 	}
 `;
 

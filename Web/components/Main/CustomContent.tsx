@@ -8,6 +8,11 @@ const { className, styles } = css.resolve`
 	div {
 		padding: 20px 50px;
 	}
+  @media screen and (max-width: 600px) {
+      div {
+          padding: 20px 0;
+      }
+  }
 `;
 
 interface ICustomContent {

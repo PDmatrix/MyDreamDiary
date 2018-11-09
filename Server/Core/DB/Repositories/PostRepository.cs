@@ -30,7 +30,8 @@ namespace DB.Repositories
                         {
                             Id = x.Id,
                             Content = x.Content,
-                            DateCreated = x.DateCreated
+                            DateCreated = x.DateCreated,
+	                        Username = x.User.Name
                         }),
 	                    Tags = r.PostTag.Select(x => x.Tag.Name).ToArray(),
                         LikesCount = r.LikesCount,

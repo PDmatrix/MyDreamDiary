@@ -1,13 +1,21 @@
 interface IPostInterface {
+	title: string;
 	content: string;
+	username: string;
+	comments?: ICommentInterface[];
+	likes_count: number;
 	date_created: string;
+	tags: string[];
 	id: number;
 	is_liked: boolean;
-	likes_count: number;
-	tags: string[];
-	title: string;
+	comments_count?: number;
+}
+
+interface ICommentInterface {
+	id: number;
+	content: string;
+	date_created: string;
 	username: string;
-	comments_count: number;
 }
 
 interface IPageInterface {

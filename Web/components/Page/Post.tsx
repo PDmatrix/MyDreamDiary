@@ -3,9 +3,9 @@ import moment from "moment";
 import Next from "next";
 import Link from "next/link";
 import React, { useState } from "react";
-import CommentIcon from "./CommentIcon";
-import HeartIcon from "./HeartIcon";
-import { Segment } from "./Segment";
+import CommentIcon from "../Shared/CommentIcon";
+import HeartIcon from "../Shared/HeartIcon";
+import { Segment } from "../Shared/Segment";
 
 interface IConcretePost {
 	post: IPostInterface;
@@ -25,8 +25,12 @@ const Post: Next.NextSFC<IConcretePost> = (props) => {
 	};
 
 	return (
-		<Segment key={post.id}>
-			<Link prefetch={true} href={`/posts/${post.id}`}>
+		<Segment>
+			<Link
+				prefetch={true}
+				href={`/posts/entry?id=${post.id}`}
+				as={`/posts/${post.id}`}
+			>
 				<a>
 					<h3>{post.title}</h3>
 				</a>
@@ -35,7 +39,7 @@ const Post: Next.NextSFC<IConcretePost> = (props) => {
 				Опубликовано{" "}
 				{moment(post.date_created)
 					.locale("ru")
-					.format("LLL")}{" "}
+					.format("L LT")}{" "}
 				пользователем {post.username}
 			</p>
 			<Divider />
@@ -51,15 +55,29 @@ const Post: Next.NextSFC<IConcretePost> = (props) => {
 				""
 			)}
 			<Divider />
-			<a onClick={likeClick}>
+			<a onClick={likeClick} className={"no-selection"}>
 				<HeartIcon liked={post.is_liked} />
 				{post.likes_count}
 			</a>
 			<Divider type="vertical" />
-			<a onClick={() => console.log("comment")}>
-				<CommentIcon />
-				{post.comments_count}
-			</a>
+			<Link
+				prefetch={true}
+				href={`/posts/entry?id=${post.id}#comments`}
+				as={`/posts/${post.id}#comments`}
+			>
+				<a className={"no-selection"}>
+					<CommentIcon />
+					{post.comments_count}
+				</a>
+			</Link>
+			<style jsx={true}>{`
+				a.no-selection {
+					-webkit-user-select: none;
+					-moz-user-select: none;
+					-khtml-user-select: none;
+					-ms-user-select: none;
+				}
+			`}</style>
 		</Segment>
 	);
 };

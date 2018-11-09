@@ -27,6 +27,7 @@ const CustomHeader: Next.NextSFC<ICustomHeader> = ({ currentRoute }) => {
 			<style jsx={true}>{`
 				span {
 					font-weight: bold;
+					float: right;
 				}
 			`}</style>
 		</Layout.Header>

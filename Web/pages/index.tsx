@@ -1,6 +1,6 @@
 import Next from "next";
 import React from "react";
-import { Segment } from "../components/Segment";
+import { Segment } from "../components/Shared/Segment";
 
 const Index: Next.NextSFC = () => {
 	return (
