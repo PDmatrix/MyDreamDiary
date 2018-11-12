@@ -4,8 +4,10 @@ import Next from "next";
 import React, { useState } from "react";
 import HeartIcon from "../Shared/HeartIcon";
 import { Segment } from "../Shared/Segment";
+import Auth from "../../lib/Auth";
 
 const Post: Next.NextSFC<IPostInterface> = (props) => {
+	const auth = new Auth();
 	const [post, setPost] = useState(props);
 
 	const likeClick = (e) => {
@@ -40,11 +42,15 @@ const Post: Next.NextSFC<IPostInterface> = (props) => {
 			) : (
 				""
 			)}
-			<Divider />
-			<a onClick={likeClick} className={"no-selection"}>
-				<HeartIcon liked={post.is_liked} />
-				{post.likes_count}
-			</a>
+			{auth.isAuthenticated() && (
+				<>
+					<Divider />
+					<a onClick={likeClick} className={"no-selection"}>
+						<HeartIcon liked={post.is_liked} />
+						{post.likes_count}
+					</a>
+				</>
+			)}
 			<style jsx={true}>{`
 				a.no-selection {
 					-webkit-user-select: none;

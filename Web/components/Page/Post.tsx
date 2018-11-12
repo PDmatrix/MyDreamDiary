@@ -6,12 +6,14 @@ import React, { useState } from "react";
 import CommentIcon from "../Shared/CommentIcon";
 import HeartIcon from "../Shared/HeartIcon";
 import { Segment } from "../Shared/Segment";
+import Auth from "../../lib/Auth";
 
 interface IConcretePost {
 	post: IPostInterface;
 }
 
 const Post: Next.NextSFC<IConcretePost> = (props) => {
+	const auth = new Auth();
 	const [post, setPost] = useState(props.post);
 
 	const likeClick = (e) => {
@@ -55,11 +57,15 @@ const Post: Next.NextSFC<IConcretePost> = (props) => {
 				""
 			)}
 			<Divider />
-			<a onClick={likeClick} className={"no-selection"}>
-				<HeartIcon liked={post.is_liked} />
-				{post.likes_count}
-			</a>
-			<Divider type="vertical" />
+			{auth.isAuthenticated() && (
+				<>
+					<a onClick={likeClick} className={"no-selection"}>
+						<HeartIcon liked={post.is_liked} />
+						{post.likes_count}
+					</a>
+					<Divider type="vertical" />
+				</>
+			)}
 			<Link
 				prefetch={true}
 				href={`/posts/entry?id=${post.id}#comments`}

@@ -1,4 +1,4 @@
-import { Pagination } from "antd";
+import { BackTop, Pagination } from "antd";
 import axios from "axios";
 import Next from "next";
 import React, { useState } from "react";
@@ -21,6 +21,7 @@ const Post: Next.NextSFC<IPageInterface> = (props) => {
 
 	return (
 		<>
+			<BackTop />
 			<PostList posts={records} />
 			<Pagination
 				onChange={changePage}
