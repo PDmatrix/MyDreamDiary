@@ -1,22 +1,36 @@
 import Next from "next";
-import React from "react";
+import React, { useState } from "react";
+import Auth from "../../lib/Auth";
 import { Segment } from "../Shared/Segment";
 import Comment from "./Comment";
 import CommentInput from "./CommentInput";
-import Auth from "../../lib/Auth";
 
 interface ICommentListInterface {
+	post_id: number;
 	comments: ICommentInterface[];
 }
 
-const CommentList: Next.NextSFC<ICommentListInterface> = ({ comments }) => {
+const CommentList: Next.NextSFC<ICommentListInterface> = ({
+	comments,
+	post_id,
+}) => {
 	const auth = Auth.getInstance();
+	const [commentsState, setCommentsState] = useState(comments);
+
+	const handleInput = (newComment) => {
+		setCommentsState([...commentsState, newComment]);
+	};
+
 	return (
 		<Segment>
-			{comments.length > 0
-				? comments.map((comment) => <Comment key={comment.id} {...comment} />)
+			{commentsState.length > 0
+				? commentsState.map((comment) => (
+						<Comment key={comment.id} {...comment} />
+				  ))
 				: "Нет комментариев."}
-			{auth.isAuthenticated() && <CommentInput />}
+			{auth.isAuthenticated() && (
+				<CommentInput handleInput={handleInput} post_id={post_id} />
+			)}
 		</Segment>
 	);
 };

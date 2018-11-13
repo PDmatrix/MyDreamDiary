@@ -1,14 +1,11 @@
 import { BackTop, Pagination } from "antd";
-import axios from "axios";
 import Next from "next";
 import React, { useState } from "react";
 import PostList from "../../components/Page/PostList";
-import Auth from "../../lib/Auth";
+import query from "../../lib/query";
 
 const loadPageDate = async (index = 1) => {
-	const res = await axios.get(`http://localhost:5000/api/page/${index}`, {
-		headers: { Authorization: `Bearer ${Auth.getInstance().getUserId()}` },
-	});
+	const res = await query.get(`http://localhost:5000/api/page/${index}`);
 	return await res.data;
 };
 

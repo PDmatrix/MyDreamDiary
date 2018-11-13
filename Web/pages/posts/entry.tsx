@@ -1,14 +1,11 @@
-import axios from "axios";
 import Next from "next";
 import React from "react";
 import CommentList from "../../components/Post/CommentList";
 import Post from "../../components/Post/Post";
-import Auth from "../../lib/Auth";
+import query from "../../lib/query";
 
 const loadPostDate = async (id) => {
-	const res = await axios.get(`http://localhost:5000/api/post/${id}`, {
-		headers: { Authorization: `Bearer ${Auth.getInstance().getUserId()}` },
-	});
+	const res = await query.get(`http://localhost:5000/api/post/${id}`);
 	return await res.data;
 };
 
@@ -16,7 +13,7 @@ const PostEntry: Next.NextSFC<IPostInterface> = (props) => {
 	return (
 		<>
 			<Post {...props} />
-			<CommentList comments={props.comments} />
+			<CommentList post_id={props.id} comments={props.comments} />
 		</>
 	);
 };

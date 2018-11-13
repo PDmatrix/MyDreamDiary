@@ -65,12 +65,15 @@ namespace DB.Repositories
 		    {
 			    var res = await context.Comment.AddAsync(new Comment {Content = content, PostId = postId, UserId = userId});
 			    await context.SaveChangesAsync();
-			    return new CommentDtoOut
-			    {
-				    Id = res.Entity.Id,
-				    Content = res.Entity.Content,
-				    DateCreated = res.Entity.DateCreated
-			    };
+			    return await context.Comment
+				    .AsQueryable()
+				    .Select(r => new CommentDtoOut
+				    {
+					    Id = r.Id,
+					    Content = r.Content,
+					    DateCreated = r.DateCreated,
+					    Username = r.User.Name
+				    }).SingleOrDefaultAsync(r => r.Id == res.Entity.Id);
 		    }
 	    }
 
@@ -96,11 +99,20 @@ namespace DB.Repositories
 		    {
 			    var like = await context.UserLike
 				                  .SingleOrDefaultAsync(r => r.PostId == id && r.UserId == userId);
+			    var post = await context.Post.FindAsync(id);
 
 			    if (like == null)
+			    {
 				    await context.UserLike.AddAsync(new UserLike {PostId = id, UserId = userId});
+				    post.LikesCount++;
+			    }
 			    else
+			    {
 				    context.UserLike.Remove(like);
+				    post.LikesCount--;
+			    }
+
+			    await context.SaveChangesAsync();
 		    }
 	    }
     }

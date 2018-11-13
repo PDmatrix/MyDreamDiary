@@ -30,6 +30,10 @@ export default class Auth {
 		this.getAccessToken = this.getAccessToken.bind(this);
 	}
 
+	setCookie(cookie) {
+		this.cookies = cookie;
+	}
+
 	login() {
 		this.auth0.authorize();
 	}

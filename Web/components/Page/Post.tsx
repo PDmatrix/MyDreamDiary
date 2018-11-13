@@ -3,10 +3,11 @@ import moment from "moment";
 import Next from "next";
 import Link from "next/link";
 import React, { useState } from "react";
+import Auth from "../../lib/Auth";
+import query from "../../lib/query";
 import CommentIcon from "../Shared/CommentIcon";
 import HeartIcon from "../Shared/HeartIcon";
 import { Segment } from "../Shared/Segment";
-import Auth from "../../lib/Auth";
 
 interface IConcretePost {
 	post: IPostInterface;
@@ -24,6 +25,7 @@ const Post: Next.NextSFC<IConcretePost> = (props) => {
 			is_liked: isLike,
 			likes_count: isLike ? post.likes_count + 1 : post.likes_count - 1,
 		});
+		query.post(`http://localhost:5000/api/post/${post.id}/like`, {});
 	};
 
 	return (

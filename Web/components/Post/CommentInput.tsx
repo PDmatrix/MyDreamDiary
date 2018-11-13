@@ -2,6 +2,7 @@ import { Button, Input } from "antd";
 import Next from "next";
 import React, { useState } from "react";
 import css from "styled-jsx/css";
+import query from "../../lib/query";
 
 // language=CSS
 const { className, styles } = css.resolve`
@@ -10,9 +11,23 @@ const { className, styles } = css.resolve`
 	}
 `;
 
-const CommentInput: Next.NextSFC = () => {
+const CommentInput: Next.NextSFC<{
+	post_id: number;
+	handleInput: (newComment: ICommentInterface) => void;
+}> = ({ post_id, handleInput }) => {
 	const handleChange = (e) => {
 		setInput(e.currentTarget.value);
+	};
+
+	const handleClick = async () => {
+		const res = await query.post(
+			`http://localhost:5000/api/post/${post_id}/comment`,
+			{
+				content: input,
+			}
+		);
+		setInput("");
+		handleInput(res.data);
 	};
 
 	const [input, setInput] = useState("");
@@ -23,7 +38,12 @@ const CommentInput: Next.NextSFC = () => {
 				onChange={handleChange}
 				value={input}
 			/>
-			<Button className={className} htmlType={"button"} type="primary">
+			<Button
+				onClick={handleClick}
+				className={className}
+				htmlType={"button"}
+				type="primary"
+			>
 				Добавить комментарий
 			</Button>
 			{styles}
