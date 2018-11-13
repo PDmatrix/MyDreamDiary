@@ -10,7 +10,7 @@ interface ICommentListInterface {
 }
 
 const CommentList: Next.NextSFC<ICommentListInterface> = ({ comments }) => {
-	const auth = new Auth();
+	const auth = Auth.getInstance();
 	return (
 		<Segment>
 			{comments.length > 0

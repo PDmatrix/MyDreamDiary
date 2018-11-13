@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using DB.Context;
 using DB.Interfaces;
 using DB.Repositories;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using NJsonSchema;
 using NSwag.AspNetCore;
@@ -43,10 +45,23 @@ namespace Core
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+	            //options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
                 options.Authority = auth0Authority;
                 options.Audience = auth0Audience;
+	            options.RequireHttpsMetadata = false;
+	            options.TokenValidationParameters = new TokenValidationParameters
+	            {
+		            ValidateIssuerSigningKey = false,
+		            //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secret")),
+		            ValidateIssuer = false,
+		            //ValidIssuer = "http://localhost:5000",
+		            ValidateAudience = false,
+		            //ValidAudience = auth0Audience,
+		            ValidateLifetime = false,
+		            //ClockSkew = TimeSpan.Zero
+	            };
             });
 
             services.AddSwagger();
@@ -73,7 +88,9 @@ namespace Core
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(builder => builder.AllowAnyOrigin());
+	        app.UseCors(builder => builder.WithOrigins("http://localhost:3000")
+		        .AllowAnyMethod()
+		        .AllowAnyHeader());
             
             app.UseSwaggerUi3WithApiExplorer(settings =>
             {

@@ -7,7 +7,7 @@ import { Segment } from "../Shared/Segment";
 import Auth from "../../lib/Auth";
 
 const Post: Next.NextSFC<IPostInterface> = (props) => {
-	const auth = new Auth();
+	const auth = Auth.getInstance();
 	const [post, setPost] = useState(props);
 
 	const likeClick = (e) => {

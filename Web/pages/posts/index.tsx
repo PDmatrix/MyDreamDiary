@@ -3,9 +3,12 @@ import axios from "axios";
 import Next from "next";
 import React, { useState } from "react";
 import PostList from "../../components/Page/PostList";
+import Auth from "../../lib/Auth";
 
 const loadPageDate = async (index = 1) => {
-	const res = await axios.get(`http://localhost:5000/api/page/${index}`);
+	const res = await axios.get(`http://localhost:5000/api/page/${index}`, {
+		headers: { Authorization: `Bearer ${Auth.getInstance().getUserId()}` },
+	});
 	return await res.data;
 };
 

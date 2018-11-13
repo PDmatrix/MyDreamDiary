@@ -35,6 +35,10 @@ namespace DB.Repositories
 	    {
 		    using (var context = ContextFactory.CreateDbContext(ConnectionString))
 		    {
+			    var user = await context.IdentityUser.FindAsync(id);
+			    if (user != null)
+				    return null;
+			    
 			    var newUser = new IdentityUser {Id = id, Email = email, Name = name};
 			    var res = await context.IdentityUser.AddAsync(newUser);
 			    await context.SaveChangesAsync();

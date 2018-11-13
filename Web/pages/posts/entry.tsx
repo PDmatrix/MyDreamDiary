@@ -3,9 +3,12 @@ import Next from "next";
 import React from "react";
 import CommentList from "../../components/Post/CommentList";
 import Post from "../../components/Post/Post";
+import Auth from "../../lib/Auth";
 
 const loadPostDate = async (id) => {
-	const res = await axios.get(`http://localhost:5000/api/post/${id}`);
+	const res = await axios.get(`http://localhost:5000/api/post/${id}`, {
+		headers: { Authorization: `Bearer ${Auth.getInstance().getUserId()}` },
+	});
 	return await res.data;
 };
 

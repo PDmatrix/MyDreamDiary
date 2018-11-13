@@ -13,7 +13,7 @@ interface IConcretePost {
 }
 
 const Post: Next.NextSFC<IConcretePost> = (props) => {
-	const auth = new Auth();
+	const auth = Auth.getInstance();
 	const [post, setPost] = useState(props.post);
 
 	const likeClick = (e) => {

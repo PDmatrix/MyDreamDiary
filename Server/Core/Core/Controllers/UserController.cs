@@ -56,13 +56,16 @@ namespace Core.Controllers
 	    public async Task<ActionResult<AddUserDtoOut>> AddUser()
 	    {
 		    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-		    var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+		    var userName = User.FindFirst("nickname")?.Value;
 		    var userEmail = User.FindFirst(ClaimTypes.Email)?.Value;
 
 		    if (userId == null || userName == null || userEmail == null)
 			    return BadRequest();
 		    
 		    var res = await _userRepository.AddUserAsync(userId, userName, userEmail);
+		    if (res == null)
+			    return Ok();
+		    
 		    return CreatedAtAction(nameof(GetUser), new { id = res.Id }, res);
 	    }
         

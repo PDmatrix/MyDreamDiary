@@ -4,8 +4,10 @@ import React from "react";
 import Auth from "../../lib/Auth";
 
 const User: Next.NextSFC = () => {
-	const auth = new Auth();
-
+	const auth = Auth.getInstance();
+	if (!auth.isAuthenticated()) {
+		auth.login();
+	}
 	return (
 		<div>
 			{!auth.isAuthenticated() && (

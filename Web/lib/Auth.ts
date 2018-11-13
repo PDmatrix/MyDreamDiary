@@ -1,9 +1,16 @@
 import auth0 from "auth0-js";
+import axios from "axios";
 import Router from "next/router";
 import Cookies from "universal-cookie";
 import { AUTH_CONFIG } from "./auth0-variables";
 
 export default class Auth {
+	public static getInstance(): Auth {
+		return Auth.instance;
+	}
+
+	protected static instance = new Auth();
+
 	cookies = new Cookies();
 	tokenRenewalTimeout;
 
@@ -15,13 +22,12 @@ export default class Auth {
 		scope: "openid profile email",
 	});
 
-	constructor() {
+	private constructor() {
 		this.login = this.login.bind(this);
 		this.logout = this.logout.bind(this);
 		this.handleAuthentication = this.handleAuthentication.bind(this);
 		this.isAuthenticated = this.isAuthenticated.bind(this);
 		this.getAccessToken = this.getAccessToken.bind(this);
-		this.scheduleRenewal();
 	}
 
 	login() {
@@ -32,6 +38,13 @@ export default class Auth {
 		this.auth0.parseHash((err, authResult) => {
 			if (authResult && authResult.accessToken && authResult.idToken) {
 				this.setSession(authResult);
+				axios.post(
+					`http://localhost:5000/api/user`,
+					{},
+					{
+						headers: { Authorization: `Bearer ${authResult.idToken}` },
+					}
+				);
 				Router.push("/user");
 			} else if (err) {
 				Router.push("/user");
@@ -65,6 +78,10 @@ export default class Auth {
 		return accessToken;
 	}
 
+	getUserId() {
+		return this.cookies.get("id_token");
+	}
+
 	logout() {
 		// Clear access token and ID token from local storage
 		this.cookies.remove("access_token");
@@ -73,7 +90,7 @@ export default class Auth {
 		this.cookies.remove("scopes");
 		clearTimeout(this.tokenRenewalTimeout);
 		// navigate to the home route
-		Router.push("/user");
+		Router.push("/");
 	}
 
 	isAuthenticated() {

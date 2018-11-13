@@ -4,6 +4,7 @@ using Core.InputDTO;
 using DB.Interfaces;
 using DB.OutputDto;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Controllers
