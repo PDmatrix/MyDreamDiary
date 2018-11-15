@@ -1,6 +1,8 @@
 import LogRocket from "logrocket";
 import setupLogRocketReact from "logrocket-react";
 import App, { Container } from "next/app";
+import Router from "next/router";
+import NProgress from "nprogress";
 import React from "react";
 
 import { Layout, LocaleProvider } from "antd";
@@ -10,6 +12,12 @@ import Head from "next/head";
 import CustomContent from "../components/Main/CustomContent";
 import CustomFooter from "../components/Main/CustomFooter";
 import CustomHeader from "../components/Main/CustomHeader";
+
+Router.events.on("routeChangeStart", () => {
+	NProgress.start();
+});
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 export default class MyApp extends App {
 	componentDidMount() {

@@ -1,5 +1,6 @@
 import auth0 from "auth0-js";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import Router from "next/router";
 import Cookies from "universal-cookie";
 import { AUTH_CONFIG } from "./auth0-variables";
@@ -30,8 +31,14 @@ export default class Auth {
 		this.getAccessToken = this.getAccessToken.bind(this);
 	}
 
-	setCookie(cookie) {
-		this.cookies = cookie;
+	getUserId() {
+		const cookie = this.cookies.get("id_token");
+		if (cookie === undefined) {
+			return undefined;
+		}
+
+		const token: { sub: string } = jwt_decode(cookie);
+		return token.sub;
 	}
 
 	login() {
@@ -49,7 +56,8 @@ export default class Auth {
 						headers: { Authorization: `Bearer ${authResult.idToken}` },
 					}
 				);
-				Router.push("/user");
+				const token: { sub: string } = jwt_decode(authResult.idToken);
+				Router.push(`/user?id=${token.sub}`, `/user`);
 			} else if (err) {
 				Router.push("/user");
 				alert(`Error: ${err.error}. Check the console for further details.`);
@@ -82,7 +90,7 @@ export default class Auth {
 		return accessToken;
 	}
 
-	getUserId() {
+	getUserToken() {
 		return this.cookies.get("id_token");
 	}
 

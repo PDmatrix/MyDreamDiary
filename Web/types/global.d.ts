@@ -24,3 +24,9 @@ interface IPageInterface {
 	records: IPostInterface[];
 	total_pages: number;
 }
+
+interface IDreamInterface {
+	id: number;
+	content: string;
+	dream_date: string;
+}

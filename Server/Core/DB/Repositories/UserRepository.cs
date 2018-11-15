@@ -90,6 +90,12 @@ namespace DB.Repositories
                             Id = x.Id,
                             Title = x.Title
                         }),
+	                    Dreams = r.Dream.Select(x => new UserDreamDtoOut
+	                    {
+		                    Content = x.Content,
+		                    DreamDate = x.DreamDate,
+		                    Id = x.Id
+	                    }).OrderBy(x => x.DreamDate),
                         Id = r.Id
                     })
                     .SingleOrDefaultAsync(r => r.Id == id);
