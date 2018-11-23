@@ -1,5 +1,3 @@
-import LogRocket from "logrocket";
-import setupLogRocketReact from "logrocket-react";
 import App, { Container } from "next/app";
 import Router from "next/router";
 import NProgress from "nprogress";
@@ -20,11 +18,6 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 export default class MyApp extends App {
-	componentDidMount() {
-		LogRocket.init(process.env.LOGROCKET_APP_ID);
-		setupLogRocketReact(LogRocket);
-	}
-
 	render() {
 		const { Component, pageProps, router } = this.props;
 		return (

@@ -2,7 +2,6 @@ import auth0 from "auth0-js";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import Router from "next/router";
-import Cookies from "universal-cookie";
 import { AUTH_CONFIG } from "./auth0-variables";
 
 export default class Auth {
@@ -12,8 +11,7 @@ export default class Auth {
 
 	protected static instance = new Auth();
 
-	cookies = new Cookies();
-	tokenRenewalTimeout;
+	tokenRenewalTimeout: any;
 
 	auth0 = new auth0.WebAuth({
 		clientID: AUTH_CONFIG.clientId,
@@ -31,9 +29,18 @@ export default class Auth {
 		this.getAccessToken = this.getAccessToken.bind(this);
 	}
 
-	getUserId() {
-		const cookie = this.cookies.get("id_token");
-		if (cookie === undefined) {
+	getUserId(): string | undefined | null {
+		if (
+			typeof window === "undefined" ||
+			window === undefined ||
+			!window.localStorage ||
+			!localStorage
+		) {
+			return null;
+		}
+
+		const cookie = localStorage.getItem("id_token");
+		if (cookie === null) {
 			return undefined;
 		}
 
@@ -65,15 +72,23 @@ export default class Auth {
 		});
 	}
 
-	setSession(authResult) {
+	setSession(authResult: any) {
+		if (
+			typeof window === "undefined" ||
+			window === undefined ||
+			!window.localStorage ||
+			!localStorage
+		) {
+			return;
+		}
 		// Set the time that the access token will expire at
 		const expiresAt = JSON.stringify(
 			authResult.expiresIn * 1000 + new Date().getTime()
 		);
 
-		this.cookies.set("access_token", authResult.accessToken, { path: "/" });
-		this.cookies.set("id_token", authResult.idToken, { path: "/" });
-		this.cookies.set("expires_at", expiresAt, { path: "/" });
+		localStorage.setItem("access_token", authResult.accessToken);
+		localStorage.setItem("id_token", authResult.idToken);
+		localStorage.setItem("expires_at", expiresAt);
 
 		// schedule a token renewal
 		this.scheduleRenewal();
@@ -83,7 +98,16 @@ export default class Auth {
 	}
 
 	getAccessToken() {
-		const accessToken = this.cookies.get("access_token");
+		if (
+			typeof window === "undefined" ||
+			window === undefined ||
+			!window.localStorage ||
+			!localStorage
+		) {
+			return;
+		}
+
+		const accessToken = localStorage.getItem("access_token");
 		if (!accessToken) {
 			throw new Error("No access token found");
 		}
@@ -91,24 +115,51 @@ export default class Auth {
 	}
 
 	getUserToken() {
-		return this.cookies.get("id_token");
+		if (
+			typeof window === "undefined" ||
+			window === undefined ||
+			!window.localStorage ||
+			!localStorage
+		) {
+			return;
+		}
+
+		return localStorage.getItem("id_token");
 	}
 
 	logout() {
+		if (
+			typeof window === "undefined" ||
+			window === undefined ||
+			!window.localStorage ||
+			!localStorage
+		) {
+			return;
+		}
+
 		// Clear access token and ID token from local storage
-		this.cookies.remove("access_token");
-		this.cookies.remove("id_token");
-		this.cookies.remove("expires_at");
-		this.cookies.remove("scopes");
+		localStorage.removeItem("access_token");
+		localStorage.removeItem("id_token");
+		localStorage.removeItem("expires_at");
+		localStorage.removeItem("scopes");
 		clearTimeout(this.tokenRenewalTimeout);
 		// navigate to the home route
 		Router.push("/");
 	}
 
 	isAuthenticated() {
+		if (
+			typeof window === "undefined" ||
+			window === undefined ||
+			!window.localStorage ||
+			!localStorage
+		) {
+			return false;
+		}
+
 		// Check whether the current time is past the
 		// access token's expiry time
-		const exp = this.cookies.get("expires_at");
+		const exp = localStorage.getItem("expires_at");
 		if (exp === undefined) {
 			return false;
 		}
@@ -130,7 +181,16 @@ export default class Auth {
 	}
 
 	scheduleRenewal() {
-		const exp = this.cookies.get("expires_at");
+		if (
+			typeof window === "undefined" ||
+			window === undefined ||
+			!window.localStorage ||
+			!localStorage
+		) {
+			return;
+		}
+
+		const exp = localStorage.getItem("expires_at");
 		if (exp === undefined) {
 			return;
 		}

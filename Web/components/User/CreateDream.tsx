@@ -6,11 +6,11 @@ import query from "../../lib/query";
 const CreateDream: Next.NextSFC<{
 	handleInput: (newComment: IDreamInterface) => void;
 }> = ({ handleInput }) => {
-	const handleChange = (e) => {
+	const handleChange = (e: any) => {
 		setInput(e.currentTarget.value);
 	};
 
-	const handleDateChange = (date, dateString) => {
+	const handleDateChange = ({}, dateString: string) => {
 		setInputDate(dateString);
 	};
 
@@ -30,7 +30,7 @@ const CreateDream: Next.NextSFC<{
 			return;
 		}
 		setInput("");
-		handleInput(res.data);
+		handleInput(await res.data);
 	};
 
 	const handleClose = () => {
@@ -51,6 +51,7 @@ const CreateDream: Next.NextSFC<{
 					onClose={handleClose}
 				/>
 			)}
+			<h3>Добавить сон:</h3>
 			<DatePicker
 				showTime={true}
 				format="YYYY-MM-DD HH:mm:ss"

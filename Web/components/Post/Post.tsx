@@ -10,7 +10,7 @@ const Post: Next.NextSFC<IPostInterface> = (props) => {
 	const auth = Auth.getInstance();
 	const [post, setPost] = useState(props);
 
-	const likeClick = (e) => {
+	const likeClick = (e: any) => {
 		e.preventDefault();
 		const isLike = !post.is_liked;
 		setPost({

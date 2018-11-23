@@ -51,4 +51,4 @@ const Navigation: Next.NextSFC<INavigation> = ({ currentRoute }) => {
 };
 
 // @ts-ignore
-export default React.memo(Navigation);
+export default Navigation;

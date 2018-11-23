@@ -6,7 +6,7 @@ import Auth from "../lib/Auth";
 
 const Callback: Next.NextSFC<WithRouterProps> = (props) => {
 	const auth = Auth.getInstance();
-	const handleAuthentication = (path) => {
+	const handleAuthentication = (path: string) => {
 		if (/access_token|id_token|error/.test(path)) {
 			auth.handleAuthentication();
 		}

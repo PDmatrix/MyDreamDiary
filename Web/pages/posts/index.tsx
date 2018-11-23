@@ -13,7 +13,7 @@ const Post: Next.NextSFC<IPageInterface> = (props) => {
 	const [page, setPage] = useState(props.current_page);
 	const [records, setRecords] = useState(props.records);
 
-	const changePage = async (newPage) => {
+	const changePage = async (newPage: number) => {
 		setPage(newPage);
 		const newProps: IPageInterface = await loadPageDate(newPage);
 		setRecords(newProps.records);

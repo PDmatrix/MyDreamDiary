@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using DB.Context;
 using DB.Interfaces;
 using DB.Repositories;
@@ -45,7 +44,6 @@ namespace Core
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-	            //options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
                 options.Authority = auth0Authority;
@@ -54,13 +52,9 @@ namespace Core
 	            options.TokenValidationParameters = new TokenValidationParameters
 	            {
 		            ValidateIssuerSigningKey = false,
-		            //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("secret")),
 		            ValidateIssuer = false,
-		            //ValidIssuer = "http://localhost:5000",
 		            ValidateAudience = false,
-		            //ValidAudience = auth0Audience,
-		            ValidateLifetime = false,
-		            //ClockSkew = TimeSpan.Zero
+		            ValidateLifetime = false
 	            };
             });
 
@@ -88,7 +82,10 @@ namespace Core
                 app.UseDeveloperExceptionPage();
             }
 
-	        app.UseCors(builder => builder.WithOrigins("http://localhost:3000")
+	        app.UseCors(builder => 
+		        builder
+		        .AllowCredentials()
+		        .AllowAnyOrigin()//.WithOrigins("http://localhost:3000")
 		        .AllowAnyMethod()
 		        .AllowAnyHeader());
             

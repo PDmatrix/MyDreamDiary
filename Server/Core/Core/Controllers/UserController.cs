@@ -68,13 +68,24 @@ namespace Core.Controllers
 		    
 		    return CreatedAtAction(nameof(GetUser), new { id = res.Id }, res);
 	    }
+	    
+	    [Authorize]
+	    [HttpDelete("dream/{id}")]
+	    [ProducesResponseType(201)]
+	    [ProducesResponseType(401)]
+	    [ProducesResponseType(404)]
+	    public async Task<ActionResult<GetDreamDtoOut>> DeleteDream([FromRoute] int id)
+	    {
+		    var res = await _userRepository.DeleteDreamAsync(id);
+		    return Ok(res);
+	    }
         
 	    [Authorize]
         [HttpPost("dream")]
         [ProducesResponseType(201)]
 	    [ProducesResponseType(401)]
 	    [ProducesResponseType(404)]
-        public async Task<ActionResult<AddDreamDtoOut>> AddDream([FromBody] AddDreamDtoIn dream)
+        public async Task<ActionResult<GetDreamDtoOut>> AddDream([FromBody] AddDreamDtoIn dream)
         {
             (await new AddDreamDtoInValidator().ValidateAsync(dream)).AddToModelState(ModelState, null);
             if (!ModelState.IsValid)

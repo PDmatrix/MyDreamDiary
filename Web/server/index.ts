@@ -9,15 +9,15 @@ const handle = app.getRequestHandler();
 app.prepare().then(() => {
 	const server = express();
 
-	server.get("/posts/:id", (req, res) => {
+	server.get("/posts/:id", (req: any, res: any) => {
 		return app.render(req, res, "/posts/entry", { id: req.params.id });
 	});
 
-	server.get("*", (req, res) => {
+	server.get("*", (req: any, res: any) => {
 		return handle(req, res);
 	});
 
-	server.listen(port, (err) => {
+	server.listen(port, (err: any) => {
 		if (err) {
 			throw err;
 		}

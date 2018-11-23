@@ -4,7 +4,7 @@ import CommentList from "../../components/Post/CommentList";
 import Post from "../../components/Post/Post";
 import query from "../../lib/query";
 
-const loadPostDate = async (id) => {
+const loadPostDate = async (id: any) => {
 	const res = await query.get(`http://localhost:5000/api/post/${id}`);
 	return await res.data;
 };

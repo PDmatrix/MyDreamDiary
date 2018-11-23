@@ -15,14 +15,14 @@ namespace DB.Repositories
         {
         }
 
-        public async Task<AddDreamDtoOut> AddDreamAsync(string userId, string content, DateTime dreamDate)
+        public async Task<GetDreamDtoOut> AddDreamAsync(string userId, string content, DateTime dreamDate)
         {
             using (var context = ContextFactory.CreateDbContext(ConnectionString))
             {
                 var newDream = new Dream {Content = content, DreamDate = dreamDate, UserId = userId};
                 var res = await context.Dream.AddAsync(newDream);
                 await context.SaveChangesAsync();
-                return new AddDreamDtoOut
+                return new GetDreamDtoOut
                 {
                     Id = res.Entity.Id,
                     Content = res.Entity.Content,
@@ -47,6 +47,22 @@ namespace DB.Repositories
 				    Id = res.Entity.Id,
 				    Name = res.Entity.Name,
 				    Email = res.Entity.Email
+			    };
+		    }
+	    }
+
+	    public async Task<GetDreamDtoOut> DeleteDreamAsync(int id)
+	    {
+		    using (var context = ContextFactory.CreateDbContext(ConnectionString))
+		    {
+			    var dream = await context.Dream.FindAsync(id);
+			    var res = context.Dream.Remove(dream);
+			    await context.SaveChangesAsync();
+			    return new GetDreamDtoOut
+			    {
+				    Id = res.Entity.Id,
+				    Content = res.Entity.Content,
+				    DreamDate = res.Entity.DreamDate
 			    };
 		    }
 	    }

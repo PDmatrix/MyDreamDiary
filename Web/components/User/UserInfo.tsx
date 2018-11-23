@@ -24,6 +24,12 @@ const UserInfo: Next.NextSFC<IUserInfoInterface> = (props) => {
 				Выйти
 			</Button>
 			<Divider />
+			<style jsx={true}>{`
+				span {
+					font-weight: bold;
+					font-size: 14px;
+				}
+			`}</style>
 		</>
 	);
 };

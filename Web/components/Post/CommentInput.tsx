@@ -15,7 +15,7 @@ const CommentInput: Next.NextSFC<{
 	post_id: number;
 	handleInput: (newComment: ICommentInterface) => void;
 }> = ({ post_id, handleInput }) => {
-	const handleChange = (e) => {
+	const handleChange = (e: any) => {
 		setInput(e.currentTarget.value);
 	};
 

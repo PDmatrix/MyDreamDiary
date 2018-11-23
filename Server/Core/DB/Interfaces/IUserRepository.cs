@@ -8,7 +8,8 @@ namespace DB.Interfaces
     {
         Task<GetUserDtoOut> GetUserAsync(string id);
         Task<GetDreamDtoOut> GetDreamAsync(int id);
-        Task<AddDreamDtoOut> AddDreamAsync(string userId, string content, DateTime dreamDate);
+        Task<GetDreamDtoOut> AddDreamAsync(string userId, string content, DateTime dreamDate);
 	    Task<AddUserDtoOut> AddUserAsync(string id, string name, string email);
+	    Task<GetDreamDtoOut> DeleteDreamAsync(int id);
     }
 }

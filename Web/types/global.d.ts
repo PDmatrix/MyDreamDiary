@@ -8,7 +8,7 @@ interface IPostInterface {
 	tags: string[];
 	id: number;
 	is_liked: boolean;
-	comments_count?: number;
+	comments_count: number;
 }
 
 interface ICommentInterface {

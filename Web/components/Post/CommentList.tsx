@@ -17,7 +17,7 @@ const CommentList: Next.NextSFC<ICommentListInterface> = ({
 	const auth = Auth.getInstance();
 	const [commentsState, setCommentsState] = useState(comments);
 
-	const handleInput = (newComment) => {
+	const handleInput = (newComment: ICommentInterface) => {
 		setCommentsState([...commentsState, newComment]);
 	};
 

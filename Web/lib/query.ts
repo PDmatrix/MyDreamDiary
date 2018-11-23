@@ -17,4 +17,12 @@ const get = async (url: string, config?: AxiosRequestConfig) => {
 	});
 };
 
-export default { post, get };
+const del = async (url: string, config?: AxiosRequestConfig) => {
+	const authorization = "Bearer " + Auth.getInstance().getUserToken();
+	return await axios.delete(url, {
+		headers: { Authorization: authorization },
+		...config,
+	});
+};
+
+export default { post, get, del };
