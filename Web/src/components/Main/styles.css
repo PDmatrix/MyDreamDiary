@@ -1,0 +1,32 @@
+.Navigation {
+    line-height: 64px;
+}
+.Header {
+    background-color: #fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.Title {
+    font-weight: bold;
+    float: right;
+}
+.Footer {
+    text-align: center;
+}
+
+.Content {
+    padding: 20px 50px;
+}
+@media screen and (max-width: 680px) {
+    .Content {
+        padding: 20px 0;
+    }
+    .Title {
+        display: none;
+    }
+}
+.ContentInner {
+    padding: 24px;
+    background: #fff;
+    border-radius: 20px;
+    min-height: 280px;
+}
