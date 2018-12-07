@@ -1,11 +1,11 @@
+import { Col, Row } from "antd";
 import React from "react";
 import { Segment } from "../components/Shared/Segment";
-import { Row, Col } from "antd";
 import styles from "./index.css";
 
 const Index: React.FunctionComponent = () => {
   return (
-    <Row className={styles.bgimg}>
+    <Row className={styles.bg_img}>
       <Col span={12}>
         <Segment>
           <p>

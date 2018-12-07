@@ -7,10 +7,7 @@ import useFetch from "../../lib/useFetch";
 
 const Post: React.FunctionComponent = () => {
   const [page, setPage] = useState(1);
-  const { data, loading, setData } = useFetch<IPageInterface>(
-    `${process.env.API_URL}/api/page/1`,
-    "get"
-  );
+  const { data, loading, setData } = useFetch<IPageInterface>(`/page/1`, "get");
   const changePage = async (newPage: number) => {
     setPage(newPage);
     const authorization = "Bearer " + Auth.getUserToken();

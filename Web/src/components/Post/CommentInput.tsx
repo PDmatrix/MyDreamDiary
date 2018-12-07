@@ -1,6 +1,6 @@
 import { Button, Input } from "antd";
 import React, { useState } from "react";
-import enxios from "../../lib/enxios";
+import axios from "axios";
 import styles from "./styles.css";
 
 const CommentInput: React.FunctionComponent<{
@@ -12,12 +12,9 @@ const CommentInput: React.FunctionComponent<{
   };
 
   const handleClick = async () => {
-    const res = await enxios.post(
-      `http://localhost:5000/api/post/${post_id}/comment`,
-      {
-        content: input
-      }
-    );
+    const res = await axios.post(`/post/${post_id}/comment`, {
+      content: input
+    });
     setInput("");
     handleInput(res.data);
   };

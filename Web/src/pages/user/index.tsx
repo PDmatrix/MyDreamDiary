@@ -23,7 +23,7 @@ interface IUserInterface {
 const User: React.FunctionComponent = () => {
   const auth = Auth.getInstance();
   const { data, loading, setData, setLoading } = useFetch<IUserInterface>(
-    `${process.env.API_URL}/api/user/${Auth.getUserId()}`,
+    `/user/${Auth.getUserId()}`,
     "get"
   );
   const [dreams, setDreams] = useState([]);

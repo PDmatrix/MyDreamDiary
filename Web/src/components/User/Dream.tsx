@@ -1,7 +1,7 @@
 import { Alert, Button, Divider, Input, Modal } from "antd";
+import axios from "axios";
 import moment from "moment";
 import React, { useState } from "react";
-import enxios from "../../lib/enxios";
 
 const Dream: React.FunctionComponent<{
   dream: IDreamInterface;
@@ -12,7 +12,7 @@ const Dream: React.FunctionComponent<{
   };
 
   const handlePublish = async () => {
-    await enxios.post("http://localhost:5000/api/post", {
+    await axios.post("/post", {
       dream_id: props.dream.id,
       title: input
     });
@@ -43,6 +43,15 @@ const Dream: React.FunctionComponent<{
 
   return (
     <>
+      {alert && (
+        <Alert
+          message="Успешно"
+          description="Запись опубликована."
+          type="success"
+          closable={true}
+          onClose={handleClose}
+        />
+      )}
       <h3>{props.dream.content}</h3>
       <span>
         Дата:{" "}
@@ -59,15 +68,6 @@ const Dream: React.FunctionComponent<{
         Удалить сон
       </Button>
       <Divider />
-      {alert && (
-        <Alert
-          message="Успешно"
-          description="Запись опубликована."
-          type="success"
-          closable={true}
-          onClose={handleClose}
-        />
-      )}
       <Modal
         title="Введите заголовок записи"
         visible={modal}

@@ -1,9 +1,9 @@
 import { Divider, Tag } from "antd";
+import axios from "axios";
 import moment from "moment";
 import React, { useState } from "react";
 import Link from "umi/link";
 import Auth from "../../lib/Auth";
-import enxios from "../../lib/enxios";
 import CommentIcon from "../Shared/CommentIcon";
 import HeartIcon from "../Shared/HeartIcon";
 import { Segment } from "../Shared/Segment";
@@ -24,7 +24,7 @@ const Post: React.FunctionComponent<IConcretePost> = props => {
       is_liked: isLike,
       likes_count: isLike ? post.likes_count + 1 : post.likes_count - 1
     });
-    await enxios.post(`${process.env.API_URL}/api/post/${post.id}/like`, {});
+    await axios.post(`/post/${post.id}/like`, {});
   };
 
   return (

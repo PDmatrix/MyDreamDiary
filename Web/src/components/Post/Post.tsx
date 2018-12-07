@@ -1,4 +1,5 @@
 import { Divider, Tag } from "antd";
+import axios from "axios";
 import moment from "moment";
 import React, { useState } from "react";
 import Auth from "../../lib/Auth";
@@ -9,7 +10,7 @@ import styles from "./styles.css";
 const Post: React.FunctionComponent<IPostInterface> = props => {
   const [post, setPost] = useState(props);
 
-  const likeClick = (e: any) => {
+  const likeClick = async (e: any) => {
     e.preventDefault();
     const isLike = !post.is_liked;
     setPost({
@@ -17,6 +18,7 @@ const Post: React.FunctionComponent<IPostInterface> = props => {
       is_liked: isLike,
       likes_count: isLike ? post.likes_count + 1 : post.likes_count - 1
     });
+    await axios.post(`/post/${post.id}/like`, {});
   };
 
   return (

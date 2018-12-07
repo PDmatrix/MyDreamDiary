@@ -5,13 +5,13 @@ using DB.Interfaces;
 using DB.OutputDto;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Core.Controllers
 {
 	[ApiController]
     [Route("api/[controller]")]
-    [Consumes("application/json")]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
@@ -22,8 +22,6 @@ namespace Core.Controllers
         }
         
         [HttpGet("{id}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
         public async Task<ActionResult<GetUserDtoOut>> GetUser([FromRoute] string id)
         {
             var user = await _userRepository.GetUserAsync(id);
@@ -35,9 +33,6 @@ namespace Core.Controllers
         }
 	    [Authorize]
         [HttpGet("dream/{id}")]
-	    [ProducesResponseType(200)]
-	    [ProducesResponseType(401)]
-	    [ProducesResponseType(404)]
         public async Task<ActionResult<GetDreamDtoOut>> GetDream([FromRoute] int id)
         {
             var dream = await _userRepository.GetDreamAsync(id);
@@ -50,10 +45,10 @@ namespace Core.Controllers
 	    
 	    [Authorize]
 	    [HttpPost]
-	    [ProducesResponseType(201)]
-	    [ProducesResponseType(400)]
-	    [ProducesResponseType(401)]
-	    public async Task<ActionResult<AddUserDtoOut>> AddUser()
+	    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+	    [ProducesResponseType(StatusCodes.Status201Created)]
+	    [ProducesResponseType(StatusCodes.Status200OK)]
+	    public async Task<ActionResult<AddUserDtoOut>> CreateUser()
 	    {
 		    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 		    var userName = User.FindFirst("nickname")?.Value;
@@ -71,9 +66,6 @@ namespace Core.Controllers
 	    
 	    [Authorize]
 	    [HttpDelete("dream/{id}")]
-	    [ProducesResponseType(201)]
-	    [ProducesResponseType(401)]
-	    [ProducesResponseType(404)]
 	    public async Task<ActionResult<GetDreamDtoOut>> DeleteDream([FromRoute] int id)
 	    {
 		    var res = await _userRepository.DeleteDreamAsync(id);
@@ -82,10 +74,7 @@ namespace Core.Controllers
         
 	    [Authorize]
         [HttpPost("dream")]
-        [ProducesResponseType(201)]
-	    [ProducesResponseType(401)]
-	    [ProducesResponseType(404)]
-        public async Task<ActionResult<GetDreamDtoOut>> AddDream([FromBody] AddDreamDtoIn dream)
+        public async Task<ActionResult<GetDreamDtoOut>> CreateDream([FromBody] AddDreamDtoIn dream)
         {
             (await new AddDreamDtoInValidator().ValidateAsync(dream)).AddToModelState(ModelState, null);
             if (!ModelState.IsValid)

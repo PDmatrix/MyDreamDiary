@@ -159,8 +159,13 @@ export default class Auth {
     localStorage.removeItem("expires_at");
     localStorage.removeItem("scopes");
     clearTimeout(this.tokenRenewalTimeout);
+
     // navigate to the home route
-    router.push("/");
+    window.location.replace(
+      `https://${process.env.AUTH0_DOMAIN}/v2/logout?returnTo=${
+        window.location.protocol
+      }//${window.location.hostname}:${window.location.port}/`
+    );
   }
 
   public renewToken() {

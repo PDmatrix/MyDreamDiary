@@ -5,13 +5,15 @@ using DB.Interfaces;
 using DB.OutputDto;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+
 
 namespace Core.Controllers
 {
 	[ApiController]
     [Route("api/[controller]")]
-    [Consumes("application/json")]
     public class PostController : ControllerBase
     {
         private readonly IPostRepository _postRepository;
@@ -22,8 +24,6 @@ namespace Core.Controllers
         }
         
         [HttpGet("{id}")]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(404)]
         public async Task<ActionResult<GetPostDtoOut>> GetPost([FromRoute] int id)
         {
 	        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -37,10 +37,7 @@ namespace Core.Controllers
         
 	    [Authorize]
         [HttpPost]
-        [ProducesResponseType(201)]
-        [ProducesResponseType(400)]
-        [ProducesResponseType(401)]
-        public async Task<ActionResult<AddPostDtoOut>> AddPost([FromBody] AddPostDtoIn body)
+        public async Task<ActionResult<AddPostDtoOut>> Create([FromBody] AddPostDtoIn body)
         {
             (await new AddPostDtoInValidator().ValidateAsync(body)).AddToModelState(ModelState, null);
             if (!ModelState.IsValid)
@@ -52,8 +49,6 @@ namespace Core.Controllers
         }
 	    
 	    [HttpGet("comment/{id}")]
-	    [ProducesResponseType(201)]
-	    [ProducesResponseType(404)]
 	    public async Task<ActionResult<CommentDtoOut>> GetComment([FromRoute] int id)
 	    {
 		    var comment = await _postRepository.GetCommentAsync(id);
@@ -66,9 +61,8 @@ namespace Core.Controllers
 	    
 	    [Authorize]
 	    [HttpPost("{id}/like")]
-	    [ProducesResponseType(200)]
-	    [ProducesResponseType(401)]
-	    public async Task<ActionResult> Like([FromRoute] int id)
+	    [ProducesResponseType(StatusCodes.Status200OK)]
+	    public async Task<ActionResult> PostLike([FromRoute] int id)
 	    {
 		    var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 		    await _postRepository.LikeAsync(id, userId);
@@ -77,10 +71,9 @@ namespace Core.Controllers
 	    
 	    [Authorize]
 	    [HttpPost("{id}/comment")]
-	    [ProducesResponseType(201)]
-	    [ProducesResponseType(400)]
-	    [ProducesResponseType(401)]
-	    public async Task<ActionResult<CommentDtoOut>> AddComment([FromRoute] int id, [FromBody] AddCommentDtoIn comment)
+	    [ProducesResponseType(StatusCodes.Status201Created)]
+	    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+	    public async Task<ActionResult<CommentDtoOut>> CreateComment(int id, AddCommentDtoIn comment)
 	    {
 		    (await new AddCommentDtoInValidator().ValidateAsync(comment)).AddToModelState(ModelState, null);
 		    if (!ModelState.IsValid)

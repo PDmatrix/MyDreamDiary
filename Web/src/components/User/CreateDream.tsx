@@ -1,6 +1,6 @@
 import { Alert, Button, DatePicker, Input } from "antd";
+import axios from "axios";
 import React, { useState } from "react";
-import enxios from "../../lib/enxios";
 
 const CreateDream: React.FunctionComponent<{
   handleInput: (newComment: IDreamInterface) => void;
@@ -16,7 +16,7 @@ const CreateDream: React.FunctionComponent<{
   const handleClick = async () => {
     let res;
     try {
-      res = await enxios.post(`http://localhost:5000/api/user/dream`, {
+      res = await axios.post(`/user/dream`, {
         content: input,
         dream_date: inputDate
       });

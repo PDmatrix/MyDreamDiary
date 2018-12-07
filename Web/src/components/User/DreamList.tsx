@@ -1,5 +1,5 @@
+import axios from "axios";
 import React, { useState } from "react";
-import enxios from "../../lib/enxios";
 import { Segment } from "../Shared/Segment";
 import Dream from "./Dream";
 
@@ -13,7 +13,7 @@ const DreamList: React.FunctionComponent<{
     if (index !== -1) {
       dreamArray.splice(index, 1);
       setDreams(dreamArray);
-      await enxios.del(`http://localhost:5000/api/user/dream/${id}`);
+      await axios.delete(`/user/dream/${id}`);
     }
   };
 

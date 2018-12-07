@@ -8,9 +8,8 @@ import useFetch from "../../lib/useFetch";
 const PostEntry: React.FunctionComponent<
   RouteComponentProps<{ id: string }>
 > = props => {
-  console.log(props);
   const { data, loading } = useFetch<IPostInterface>(
-    `${process.env.API_URL}/api/post/${props.match.params.id}`,
+    `/post/${props.match.params.id}`,
     "get"
   );
   return (

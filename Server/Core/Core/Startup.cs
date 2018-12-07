@@ -12,6 +12,7 @@ using Newtonsoft.Json.Serialization;
 using NJsonSchema;
 using NSwag.AspNetCore;
 
+[assembly: ApiConventionType(typeof(DefaultApiConventions))]
 namespace Core
 {
     public class Startup
@@ -21,10 +22,8 @@ namespace Core
             var connectionString = Environment.GetEnvironmentVariable("ASPNETCORE_CONNECTION_STRING") ??
                                    throw new ArgumentException("There is no ASPNETCORE_CONNECTION_STRING provided");
             
-            services.AddCors();
-	        
             services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(x =>
                 {
                     x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
@@ -58,7 +57,7 @@ namespace Core
 	            };
             });
 
-            services.AddSwagger();
+            services.AddSwaggerDocument();
 
             services.AddScoped<ICoreContextFactory, CoreContextFactory>();
 
@@ -84,16 +83,12 @@ namespace Core
 
 	        app.UseCors(builder => 
 		        builder
-		        .AllowCredentials()
-		        .AllowAnyOrigin()//.WithOrigins("http://localhost:3000")
+		        .AllowAnyOrigin()
 		        .AllowAnyMethod()
 		        .AllowAnyHeader());
-            
-            app.UseSwaggerUi3WithApiExplorer(settings =>
-            {
-                settings.GeneratorSettings.DefaultPropertyNameHandling = 
-                    PropertyNameHandling.SnakeCase;
-            });
+
+	        app.UseSwagger();
+	        app.UseSwaggerUi3();
 
             app.UseAuthentication();
             

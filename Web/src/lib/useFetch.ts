@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Dispatch, useEffect, useState } from "react";
-import Auth from "./Auth";
 
 const useFetch = <T extends {}>(
   url: string,
@@ -15,9 +14,7 @@ const useFetch = <T extends {}>(
   const [loading, setLoading] = useState(true);
 
   const loadData = async () => {
-    const authorization = "Bearer " + Auth.getUserToken();
     const res = await axios({
-      headers: { Authorization: authorization },
       method: verb,
       url
     });
