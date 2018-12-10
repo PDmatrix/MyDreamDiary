@@ -24,7 +24,8 @@ namespace Core.Controllers
         [HttpGet("{index=1}")]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<Page<PageDtoOut>>> GetPage([FromRoute] int index, [FromQuery] GetPageDtoIn getPageDtoIn)
+        public async Task<ActionResult<Page<PageDtoOut>>> 
+	        GetPage([FromRoute] int index, [FromQuery] GetPageDtoIn getPageDtoIn)
         {
             (await new GetPageDtoInValidator().ValidateAsync(getPageDtoIn)).AddToModelState(ModelState, null);
             if (!ModelState.IsValid)
