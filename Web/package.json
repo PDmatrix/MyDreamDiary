@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "umi dev",
-    "build": "umi build"
+    "build": "umi build",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Dmatrix",
   "license": "MIT",
@@ -32,6 +34,8 @@
     "react-dom": "^16.7.0-alpha.2",
     "react-router": "^4.3.1",
     "umi": "^2.2.7",
-    "umi-plugin-react": "^1.2.3"
-  }
+    "umi-plugin-react": "^1.2.3",
+    "snyk": "^1.189.0"
+  },
+  "snyk": true
 }
