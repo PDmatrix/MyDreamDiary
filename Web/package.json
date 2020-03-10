@@ -34,7 +34,7 @@
     "react-dom": "^16.7.0-alpha.2",
     "react-router": "^4.3.1",
     "umi": "^2.2.7",
-    "umi-plugin-react": "^1.2.3",
+    "umi-plugin-react": "^1.9.0",
     "snyk": "^1.161.1"
   },
   "snyk": true
