@@ -1,8 +1,755 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.3
+version: v1.14.1
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
   SNYK-JS-AXIOS-174505:
     - axios:
         patched: '2019-05-06T06:28:57.770Z'
+  SNYK-JS-LODASH-567746:
+    - antd > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - antd > rc-form > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - antd > rc-steps > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - antd > rc-table > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - antd > rc-tabs > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > antd > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > @babel/core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - antd > rc-editor-mention > rc-editor-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > antd > rc-form > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > antd > rc-steps > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > antd > rc-table > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > antd > rc-tabs > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > @babel/core > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > http-proxy-middleware > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > cheerio > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > yeoman-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > antd > rc-editor-mention > rc-editor-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > @babel/core > @babel/helpers > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > babel-plugin-import > @babel/helper-module-imports > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/register > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > @babel/core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > css-hot-loader > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > css-loader > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > duplicate-package-checker-webpack-plugin > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > fork-ts-checker-webpack-plugin > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > hard-source-webpack-plugin > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > inquirer > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > webpack-bundle-analyzer > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > webpack-manifest-plugin > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > webpack-merge > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > webpackbar > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > yeoman-generator > async > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > yeoman-generator > yeoman-environment > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > umi-plugin-dva > dva > redux > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > @babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > @babel/core > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > yeoman-generator > yeoman-environment > inquirer > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > react-dev-utils > inquirer > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > webpackbar > consola > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > webpackbar > table > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > enzyme > cheerio > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > yeoman-generator > yeoman-environment > grouped-queue > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > umi-plugin-dva > dva > @types/react-router-redux > redux > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi-plugin-react > umi-plugin-dva > dva > dva-core > redux > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-parameters > @babel/helper-call-delegate > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > @babel/core > @babel/helpers > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-parameters > @babel/helper-call-delegate > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/preset-env > @babel/plugin-transform-parameters > @babel/helper-call-delegate > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > @babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-classes > @babel/helper-define-map > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > async > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-parameters > @babel/helper-call-delegate > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-parameters > @babel/helper-call-delegate > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-resolve-dependencies > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > jest-jasmine2 > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-jasmine2 > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @svgr/core > h2x-core > h2x-parse > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > jest-jasmine2 > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-jasmine2 > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > jest-jasmine2 > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-jasmine2 > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > jest-jasmine2 > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > jest-jasmine2 > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-reports > handlebars > async > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > istanbul-api > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > jest-jasmine2 > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > jest-jasmine2 > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > jest-jasmine2 > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > jest-jasmine2 > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > jest-jasmine2 > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > jest-jasmine2 > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > jest-jasmine2 > jest-snapshot > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > af-webpack > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > babel-preset-umi > @babel/preset-env > @babel/plugin-transform-exponentiation-operator > @babel/helper-builder-binary-assignment-operator-visitor > @babel/helper-explode-assignable-expression > @babel/traverse > @babel/helper-function-name > @babel/helper-get-function-arity > @babel/types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > jest-environment-jsdom > jsdom > request-promise-native > request-promise-core > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-jest > babel-plugin-istanbul > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
+    - umi > umi-build-dev > umi-test > jest > jest-cli > jest-runner > jest-runtime > jest-config > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T06:27:56.468Z'
